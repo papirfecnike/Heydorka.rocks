@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("themeToggle");
 
   let isDarkMode = localStorage.getItem("theme") === "dark";
+
   const clear = (el) => (el.innerHTML = "");
 
   const getCurrentPage = () => {
@@ -94,7 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         groups[key].forEach((item) => {
           const el = itemRenderer(item);
-          el.addEventListener("click", () => {
+          el.addEventListener("click", (e) => {
+            e.preventDefault();
             details.innerHTML = detailRenderer(item);
           });
           group.appendChild(el);
@@ -152,17 +154,18 @@ document.addEventListener("DOMContentLoaded", () => {
       groups: timeline,
       containerClass: "speaking",
       itemRenderer: (talk) => {
-        const btn = document.createElement("button");
-        btn.className = "speaking-item";
-        btn.innerHTML = `
+        const link = document.createElement("a");
+        link.href = "#";
+        link.className = "speaking-item";
+        link.innerHTML = `
           <span class="speaking-title">${talk.title}</span>
           <span class="speaking-conf">${talk.conference}</span>
         `;
-        return btn;
+        return link;
       },
       detailRenderer: (talk) => `
         <h3>${talk.title}</h3>
-        <p class="speaking-meta">${talk.conference}</p>
+        <p class="speaking-conf">${talk.conference}</p>
         ${talk.content.map((p) => `<p>${p}</p>`).join("")}
       `,
     });
@@ -175,14 +178,16 @@ document.addEventListener("DOMContentLoaded", () => {
       groups: timeline,
       containerClass: "publications",
       itemRenderer: (article) => {
-        const btn = document.createElement("button");
-        btn.className = "publications-item";
-        btn.textContent = article.title;
-        return btn;
+        const link = document.createElement("a");
+        link.href = "#";
+        link.className = "publications-item";
+        link.textContent = article.title;
+        return link;
       },
-      detailRenderer: (article) =>
-        `<h3>${article.title}</h3>
-         ${article.content.map((p) => `<p>${p}</p>`).join("")}`,
+      detailRenderer: (article) => `
+        <h3>${article.title}</h3>
+        ${article.content.map((p) => `<p>${p}</p>`).join("")}
+      `,
     });
   }
 
@@ -193,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quotes.forEach(({ text, author }) => {
       section.innerHTML += `
         <figure class="quote">
-          <blockquote class="quote-text">“${text}”</blockquote>
+          <blockquote class="quote-text">${text}</blockquote>
           <figcaption class="quote-author">— ${author}</figcaption>
         </figure>
       `;
@@ -242,12 +247,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderMenu() {
     menuList.innerHTML = menuItems
       .map(
-        ({ label, slug }) =>
-          `<li>
+        ({ label, slug }) => `
+          <li>
             <a href="#${slug}" class="${
-              slug === getCurrentPage() ? "active" : ""
-            }">${label}</a>
-          </li>`
+          slug === getCurrentPage() ? "active" : ""
+        }">
+              ${label}
+            </a>
+          </li>
+        `
       )
       .join("");
   }
@@ -290,6 +298,9 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMenu();
   }
 
+  /* =========================================================
+   * Theme handling
+   * ========================================================= */
   themeToggle.addEventListener("change", () => {
     isDarkMode = themeToggle.checked;
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
