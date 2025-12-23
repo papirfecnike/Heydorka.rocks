@@ -162,6 +162,24 @@ body {
   height: var(--space-xl);
 }
 
+.quote {
+  padding: var(--space-l);
+  margin-bottom: var(--space-l);
+  border-left: 4px solid var(--color-border-subtle);
+}
+
+.quote-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 0 0 var(--space-s);
+}
+
+.quote-author {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
 @media (max-width: 900px) {
   .cv-grid,
   .content-section {
