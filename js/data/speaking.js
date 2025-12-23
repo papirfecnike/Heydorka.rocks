@@ -8,7 +8,7 @@ export const speaking = {
         {
         id: "ux-automation",
         title: "No researchers were harmed in the making of this test suite",
-        conference: "React Norway 2026 (upcoming)",
+        conference: "REACT NORWAY 2026 (upcoming)",
         content: [
             "What if UX research could move as fast as modern product development — without losing its soul?",
             "I built a fully automated UX test framework using Figma Make to capture real user behavior asynchronously.",
@@ -20,7 +20,7 @@ export const speaking = {
         {
         id: "ux-it-sec",
         title: "Safe by design: the UX of secure banking",
-        conference: "NDC Security 2026 (upcoming)",
+        conference: "NDC SECURITY 2026 (upcoming)",
         content: [
             "When it comes to banking applications, security is non-negotiable, but so is the user experience. With sensitive financial data on the line, ensuring that users interact securely with your platform is crucial.",
             "This talk will explore how UX design can be the unsung hero in protecting banking applications from security breaches. When UX and IT security work together, users are guided safely through complex security features without frustration or error. By focusing on intuitive design, we can reduce risky behaviors like bypassing 2FA, and ultimately build trust in digital banking systems.",
@@ -44,7 +44,7 @@ export const speaking = {
         {
         id: "irresistible-ux",
         title: "The irresistible UX: the psychology of brainwaves and clickbait",
-        conference: "We are developers world conference 2025",
+        conference: "WADWC 2025",
         content: [
             "This talk explores how tapping into the brain’s natural wiring can enhance user experiences. By applying cognitive biases, psychological principles, and neuroscience insights, we can craft intuitive interfaces and workflows that effortlessly guide user behavior and foster habit-forming interactions. Discover strategies to minimize friction in digital products, keeping users engaged and making interactions feel second nature."
         ],
@@ -54,7 +54,7 @@ export const speaking = {
         {
         id: "irresistible-ux-ndc",
         title: "The irresistible UX: the psychology of brainwaves and clickbait",
-        conference: "NDC Oslo 2025",
+        conference: "NDC OSLO 2025",
         content: [
             "This talk explores how tapping into the brain’s natural wiring can enhance user experiences. By applying cognitive biases, psychological principles, and neuroscience insights, we can craft intuitive interfaces and workflows that effortlessly guide user behavior and foster habit-forming interactions. Discover strategies to minimize friction in digital products, keeping users engaged and making interactions feel second nature."
         ],
@@ -64,7 +64,7 @@ export const speaking = {
         {
         id: "information-arch",
         title: "The ripple effect: how information architecture transforms your product, company, and (almost) everything",
-        conference: "NDC Melbourne 2025",
+        conference: "NDC MELBOURNE 2025",
         content: [
             "This talk emphasizes IA's role in a company's success, using a mobile app example to illustrate challenges and solutions. A strong IA supports sustainable growth, user-friendly products, team alignment, and overall success."
         ],
@@ -76,7 +76,7 @@ export const speaking = {
         {
         id: "collab-ux-reactday",
         title: "How to train your designer?",
-        conference: "React Day Berlin 2024",
+        conference: "REACT DAY BERLIN 2024",
         content: [
             "Cooperation between the members of the Product Trio is necessary in order to deliver high quality product, while evolving as a professional. Interesting resonation with the popular movie How to train your dragon."
         ],
@@ -85,7 +85,7 @@ export const speaking = {
         {
         id: "collab-ux-stavanger",
         title: "How to train your designer?",
-        conference: "#HelloStavanger 2024",
+        conference: "#HELLOSTAVANGER 2024",
         content: [
             "Cooperation between the members of the Product Trio is necessary in order to deliver high quality product, while evolving as a professional. Interesting resonation with the popular movie How to train your dragon."
         ],
@@ -94,7 +94,7 @@ export const speaking = {
         {
         id: "cost-ux",
         title: "The cost of not having a designer",
-        conference: "RenderCon Kenya 2024",
+        conference: "RENDERCON KENYA 2024",
         content: [
             "I’ll be discussing the crucial role of early design integration in engineering and business. By fostering collaboration, we can enhance user satisfaction and drive innovation. It’s a topic I’m passionate about, as design plays a vital role in shaping successful products and organizations."
         ],
@@ -103,7 +103,7 @@ export const speaking = {
         {
         id: "grow-ux",
         title: "How to grow in UX",
-        conference: "UX Graz meetup 2024",
+        conference: "UX GRAZ MEETUP 2024",
         content: [
             "It's always inspiring to explore potential UX growth journeys together, sharing ideas and learning from each other as we navigate this vast field. I’m really looking forward to meeting like-minded people and having meaningful discussions. We're all on this path, growing and evolving together!"
         ],
@@ -112,7 +112,7 @@ export const speaking = {
         {
         id: "the-ripple",
         title: "The ripple effect: how information architecture transforms your product, company, and (almost) everything",
-        conference: "World IA Day 2024",
+        conference: "WORLD IA DAY 2024",
         content: [
             "This talk highlights the importance of IA for a company’s success, using a mobile app company as an example to illustrate the issues and provide solutions. A well-structured IA ensures sustainable growth, aligned teams, ultimately enhancing the product, UX, and overall organization for continued success."
         ],
@@ -122,7 +122,7 @@ export const speaking = {
         {
         id: "collab-ux-berlin",
         title: "How to train your designer?",
-        conference: "DroidCon Berlin 2024",
+        conference: "DROIDCON BERLIN 2024",
         content: [
             "Cooperation between the members of the Product Trio is necessary in order to deliver high quality product, while evolving as a professional. Interesting resonation with the popular movie How to train your dragon."
         ],
@@ -134,7 +134,7 @@ export const speaking = {
         {
         id: "flawless-flows",
         title: "Flawless flows: The psychology of harmonious teamwork",
-        conference: "JS Conf Japan 2022",
+        conference: "JS CONF JAPAN 2022",
         content: [
             "This presentation will explore how to pull the strings in the background so that in the end we actually DEVELOP the product."
         ],
@@ -146,7 +146,7 @@ export const speaking = {
         {
         id: "starting-thread",
         title: "Starting a thread: pin the right questions",
-        conference: "JS Conf Mexico (2020)",
+        conference: "JS CCONF MEXICO (2020)",
         content: [
             "Through my journey of learning to code, I concluded a few thoughts on how mentors should help their mentees."
         ],
