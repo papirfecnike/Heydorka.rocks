@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { label: "Welcome", slug: "index" },
     { label: "Speaking", slug: "speaking" },
     { label: "Publications", slug: "publications" },
-    { label: "Credentials", slug: "credentials" },
+    { label: "Testimonials", slug: "testimonials" },
     { label: "CV", slug: "cv" },
     { label: "About", slug: "about" },
   ];
@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
       paragraphs: ["Articles and research publications."],
     },
 
-    credentials: {
+    testimonials: {
       layout: "default",
-      title: "Credentials",
+      title: "Testimonials",
       paragraphs: ["Education and professional background."],
     },
 
@@ -79,6 +79,28 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "Development Team Leader (Commsignia, 2017-2018)", content: "Led developer teams specializing in C, C++, and JAVA for V2X solution. Optimized resource allocation through agile methodologies. Provided clear data analytics to management. Formulated long-term organizational development plan and established OKRs." },
         { title: "Project Manager (AImotive, 2016-2017)", content: "Key leadership role in Volvo self-driving car project: developed software in collaboration with Nvidia. Responsible for project plans, resource management, development, QA, and procurement, while managing a diverse team with various nationalities, coordinated travel and conducted negotiations. Provided leadership and coaching to team of 9-12 engineers." },
         { title: "Scrum Master (NNG, 2014-2016)", content: "Actively participated in resource allocation and process enhancement - negotiated between core development and project teams. Promoted knowledge sharing and transparency, with which the efficiency increased and delivery time decreased. Facilitated implementation of agile processes and routines and reported weekly improvements of 12 core teams to upper management. Adhered to preset Key Performance Indicators (KPIs) to ensure timely project delivery." },
+      ],
+
+      education: [
+        {
+          title: "MBA (Budapest University of Technology and Economics, 2010-2013)",
+          content: "Studies: Accounting and Finance, Project- and Technology Management, Law, Economics, and Marketing, HR and Organizational behaviour. Thesis: “How to manage a small company until getting the first investment”. I established a company, so I had something to write about. Later the business idea became successful and received a capital injection."
+        },
+        {
+          title: "Bachelor’s Degree (University of Hertfordshire, 2004-2008)",
+          content: "Studies: Accounting and quantitative methods, Project management and Economics, Business law and Marketing. Thesis: “How to motivate and manage creative colleagues - both in the case of a small and a big company”."
+        },
+      ],
+
+      skills: [
+        {
+          title: "Hard skills",
+          content: "Public speaking: Fluent in English and Hungarian, improving Norwegian, Good presentation skills (conferences, mentoring, teaching), Design systems, Information architecture, Design operations, Documentation"
+        },
+        {
+          title: "Soft skills",
+          content: "Leadership: business analysis, reporting, coaching, supporting problem-solving, decision making, people management, public speaking and knowledge sharing."
+        },
       ],
     },
 
@@ -160,18 +182,33 @@ document.addEventListener("DOMContentLoaded", () => {
     content.appendChild(section);
   }
 
-  function renderCV({ title, design, management }) {
+  function renderCV({ title, design, management, education, skills }) {
     const h2 = document.createElement("h2");
     h2.textContent = title;
     content.appendChild(h2);
 
-    const grid = document.createElement("section");
-    grid.className = "cv-grid";
+    // Work experience
+    const workGrid = document.createElement("section");
+    workGrid.className = "cv-grid";
 
-    grid.appendChild(createCVColumn("Design", design));
-    grid.appendChild(createCVColumn("Management", management));
+    workGrid.appendChild(createCVColumn("Design", design));
+    workGrid.appendChild(createCVColumn("Management", management));
 
-    content.appendChild(grid);
+    content.appendChild(workGrid);
+
+    // Spacer
+    const spacer = document.createElement("div");
+    spacer.className = "cv-spacer";
+    content.appendChild(spacer);
+
+    // Education & skills
+    const extraGrid = document.createElement("section");
+    extraGrid.className = "cv-grid";
+
+    extraGrid.appendChild(createCVColumn("Education", education));
+    extraGrid.appendChild(createCVColumn("Skills", skills));
+
+    content.appendChild(extraGrid);
   }
 
   function createCVColumn(title, items) {
