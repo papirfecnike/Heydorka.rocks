@@ -3,7 +3,6 @@
    ===================================================== */
 
 :root {
-  /* Colors */
   --color-bg: #ffffff;
   --color-bg-dark: #111111;
   --color-text: #111111;
@@ -11,10 +10,6 @@
   --color-accent: #4f46e5;
   --color-border-subtle: rgba(0, 0, 0, 0.08);
 
-  /* Icon */
-  --color-icon-default: #111111;
-
-  /* Typography */
   --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
   --font-size-h1: 40px;
@@ -25,7 +20,6 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
-  /* Spacing */
   --space-xs: 4px;
   --space-s: 8px;
   --space-m: 16px;
@@ -33,16 +27,14 @@
   --space-xl: 48px;
   --space-2xl: 64px;
 
-  /* Radius */
   --radius-pill: 999px;
 
-  /* Motion */
   --transition-fast: 0.15s ease;
   --transition-base: 0.3s ease;
 }
 
 /* =====================================================
-   DARK MODE – TOKEN OVERRIDE
+   DARK MODE
    ===================================================== */
 
 .page.dark {
@@ -70,34 +62,39 @@ body {
 }
 
 /* =====================================================
-   PAGE LAYOUT (FONTOS!)
+   PAGE LAYOUT
    ===================================================== */
 
 .page {
   max-width: 960px;
   margin: 0 auto;
   padding: var(--space-xl);
-
-  background-color: var(--color-bg);
   color: var(--color-text);
-
+  background-color: var(--color-bg);
   transition: background-color var(--transition-base),
     color var(--transition-base);
 }
 
 /* =====================================================
-   TYPOGRAPHY – FOUNDATION
+   HEADER
+   ===================================================== */
+
+.site-header {
+  position: relative;
+  margin-bottom: var(--space-2xl);
+}
+
+/* =====================================================
+   TYPOGRAPHY
    ===================================================== */
 
 h1 {
   font-size: var(--font-size-h1);
-  font-weight: var(--font-weight-bold);
   margin: 0 0 var(--space-m);
 }
 
 h2 {
   font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-bold);
   margin: 0 0 var(--space-s);
 }
 
@@ -109,10 +106,6 @@ p {
 /* =====================================================
    NAVIGATION
    ===================================================== */
-
-.main-nav {
-  margin-bottom: var(--space-xl);
-}
 
 .menu {
   list-style: none;
@@ -140,22 +133,22 @@ p {
   transition: width var(--transition-fast);
 }
 
-.menu-item a.active::after {
-  width: 100%;
-}
-
 .menu-item a.active {
   font-weight: var(--font-weight-bold);
 }
 
+.menu-item a.active::after {
+  width: 100%;
+}
+
 /* =====================================================
-   THEME TOGGLE
+   THEME SWITCH
    ===================================================== */
 
 .theme-switch {
   position: absolute;
-  top: var(--space-l);
-  right: var(--space-l);
+  top: 0;
+  right: 0;
 }
 
 .theme-switch__input {
@@ -170,7 +163,7 @@ p {
   width: 56px;
   height: 28px;
   padding: 0 var(--space-s);
-  background-color: #cccccc;
+  background-color: #ccc;
   border-radius: var(--radius-pill);
   cursor: pointer;
 }
@@ -181,7 +174,6 @@ p {
 
 .theme-switch__icon {
   font-size: 14px;
-  color: var(--color-icon-default);
 }
 
 .theme-switch__slider {
@@ -190,7 +182,7 @@ p {
   left: 3px;
   width: 22px;
   height: 22px;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 50%;
   transition: transform var(--transition-base);
 }
@@ -202,7 +194,7 @@ p {
 }
 
 /* =====================================================
-   HEADER / CONTENT / FOOTER
+   SECTIONS
    ===================================================== */
 
 .header {
