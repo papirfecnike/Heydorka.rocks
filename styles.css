@@ -1,12 +1,6 @@
-/* ===============================
-   Design tokens
-   =============================== */
-
 :root {
   --color-bg: #ffffff;
-  --color-bg-dark: #111111;
   --color-text: #111111;
-  --color-text-light: #f5f5f5;
   --color-border-subtle: rgba(0, 0, 0, 0.08);
 
   --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -24,19 +18,11 @@
   --transition-base: 0.3s ease;
 }
 
-/* ===============================
-   Dark mode
-   =============================== */
-
-.page.dark {
-  --color-bg: var(--color-bg-dark);
-  --color-text: var(--color-text-light);
+body.dark {
+  --color-bg: #111111;
+  --color-text: #f5f5f5;
   --color-border-subtle: rgba(255, 255, 255, 0.12);
 }
-
-/* ===============================
-   Base
-   =============================== */
 
 *,
 *::before,
@@ -49,48 +35,23 @@ body {
   font-family: var(--font-family-base);
   line-height: 1.6;
   background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color var(--transition-base),
+    color var(--transition-base);
 }
 
 .page {
-  max-width: flexible;
+  max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-xl);
-  color: var(--color-text);
 }
-
-/* ===============================
-   Typography
-   =============================== */
-
-h1 {
-  font-size: var(--font-size-h1);
-  margin-bottom: var(--space-m);
-}
-
-h2 {
-  font-size: var(--font-size-h2);
-  margin-bottom: var(--space-l);
-}
-
-h3 {
-  font-size: var(--font-size-h3);
-  margin-bottom: var(--space-m);
-}
-
-p {
-  margin-bottom: var(--space-m);
-  max-width: 640px;
-}
-
-/* ===============================
-   Navigation
-   =============================== */
 
 .menu {
   display: flex;
   gap: var(--space-l);
   list-style: none;
   padding: 0;
+  margin-bottom: var(--space-l);
 }
 
 .menu a {
@@ -102,10 +63,6 @@ p {
 .menu a.active {
   font-weight: 700;
 }
-
-/* ===============================
-   Theme switch
-   =============================== */
 
 .theme-switch {
   position: absolute;
@@ -123,6 +80,7 @@ p {
   background: #ccc;
   border-radius: var(--radius-pill);
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 0 8px;
   cursor: pointer;
@@ -146,10 +104,6 @@ p {
   transform: translateX(28px);
 }
 
-/* ===============================
-   About layout
-   =============================== */
-
 .content-section {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -161,10 +115,6 @@ p {
   width: 100%;
   border-radius: 8px;
 }
-
-/* ===============================
-   CV layout
-   =============================== */
 
 .cv-grid {
   display: grid;
@@ -189,51 +139,28 @@ p {
 
 .accordion-content {
   margin-top: var(--space-s);
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0.9;
-  transition:
-    max-height 0.35s ease,
-    opacity 0.25s ease;
-}
-
-/* Open state */
-details[open] .accordion-content {
-  opacity: 0.9;
 }
 
 .cv-column summary {
   position: relative;
   padding-right: 24px;
-  cursor: pointer;
 }
 
-/* Chevron */
 .cv-column summary::after {
   content: "›";
   position: absolute;
   right: 0;
   top: 0;
-  transform: rotate(0deg);
   transition: transform 0.25s ease;
-  font-size: 18px;
-  line-height: 1;
 }
 
-/* Rotate chevron when open */
 .cv-column details[open] > summary::after {
   transform: rotate(90deg);
 }
 
-/* Spacing */
-
 .cv-spacer {
   height: var(--space-xl);
 }
-
-/* ===============================
-   Responsive
-   =============================== */
 
 @media (max-width: 900px) {
   .cv-grid,
