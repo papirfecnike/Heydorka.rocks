@@ -44,12 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       paragraphs: ["Education and professional background."],
     },
 
-    cv: {
-      layout: "default",
-      title: "Curriculum Vitae",
-      paragraphs: ["Professional history and CV."],
-    },
-
     about: {
       layout: "default",
       title: "About",
@@ -63,6 +57,29 @@ document.addEventListener("DOMContentLoaded", () => {
         src: "img/doramakszy.png",
         alt: "Portrait of Dora Makszy",
       },
+    },
+
+    cv: {
+      layout: "cv",
+      title: "Curriculum Vitae",
+
+      design: [
+        { title: "Head of Design (Element Logic, 2025-current)", content: "Strategic advisor for the product trio, as well as enthusiastic executor of project deliveries. Mentoring, managing and motivating the amazing design team, as well as recruiting new colleagues to ensure organic growth." },
+        { title: "Senior UX Designer (Element Logic, 2024-2025)", content: "The company's biggest and most successful product - eManager, that manages AutoStore, the robotic logistics system - is developed by five different teams, and they needed a motivated designer." },
+        { title: "Product Design & DesignOps Lead (Futurehome, 2022-2024)", content: "Situation: hired to connect design, operations, and product. Result: improved UX, stronger design systems, and measurable cost savings." },
+        { title: "Senior Product Designer (GoTo, 2022)", content: "Delivered WCAG-compliant designs under tight deadlines in distributed teams." },
+        { title: "Design Team Leader (VDD:Live, 2020-2022)", content: "Built design foundations, mentored teams, and aligned UX with business goals." },
+        { title: "Design Teacher (CodeX, 2021)", content: "Taught design thinking, UX, research, and prototyping in an intensive summer camp." },
+        { title: "Senior Business Analyst & UX Designer (IBM, 2018-2019)", content: "Translated global business requirements into user-centered digital services." },
+        { title: "UI Designer (NNG, 2007-2012)", content: "Worked on navigation software, UI kits, and early iPhone pedestrian navigation." },
+      ],
+
+      management: [
+        { title: "Senior Design Project Manager (Supercharge, 2019-2020)", content: "Led UX/UI design and development for Ericsson's MWC 2020 sales demo: conducted user interviews and analyzed data, while coordinating schedules for UX/UI professionals and applying various UX methodologies, (usability testing, wireframing, accessibility evaluation, journey mapping). Negotiated with clients, administrated projects and managed people across projects according to project requirements, having the company’s best interest in focus. Participated in resource management for efficient allocation, and addressed and eliminated blocker issues to meet project goals and KPIs." },
+        { title: "Development Team Leader (Commsignia, 2017-2018)", content: "Led developer teams specializing in C, C++, and JAVA for V2X solution. Optimized resource allocation through agile methodologies. Provided clear data analytics to management. Formulated long-term organizational development plan and established OKRs." },
+        { title: "Project Manager (AImotive, 2016-2017)", content: "Key leadership role in Volvo self-driving car project: developed software in collaboration with Nvidia. Responsible for project plans, resource management, development, QA, and procurement, while managing a diverse team with various nationalities, coordinated travel and conducted negotiations. Provided leadership and coaching to team of 9-12 engineers." },
+        { title: "Scrum Master (NNG, 2014-2016)", content: "Actively participated in resource allocation and process enhancement - negotiated between core development and project teams. Promoted knowledge sharing and transparency, with which the efficiency increased and delivery time decreased. Facilitated implementation of agile processes and routines and reported weekly improvements of 12 core teams to upper management. Adhered to preset Key Performance Indicators (KPIs) to ensure timely project delivery." },
+      ],
     },
 
     404: {
@@ -94,14 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function getCurrentPage() {
     const slug = window.location.hash.slice(1);
     if (!slug) return "index";
-    return Object.prototype.hasOwnProperty.call(pages, slug)
-      ? slug
-      : "404";
-  }
-
-  function navigateTo(slug) {
-    history.pushState({}, "", `#${slug}`);
-    render();
+    return pages[slug] ? slug : "404";
   }
 
   function clear(el) {
@@ -115,10 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderHero({ title, text }) {
     const h1 = document.createElement("h1");
     h1.textContent = title;
-
     const p = document.createElement("p");
     p.textContent = text;
-
     header.append(h1, p);
   }
 
@@ -127,65 +135,77 @@ document.addEventListener("DOMContentLoaded", () => {
     section.className = "content-section";
 
     const textBlock = document.createElement("div");
-    textBlock.className = "content-text";
-
     const h2 = document.createElement("h2");
     h2.textContent = title;
     textBlock.appendChild(h2);
 
-    paragraphs.forEach((text) => {
+    paragraphs.forEach((t) => {
       const p = document.createElement("p");
-      p.textContent = text;
+      p.textContent = t;
       textBlock.appendChild(p);
     });
 
     section.appendChild(textBlock);
 
     if (image) {
-      const imageBlock = document.createElement("div");
-      imageBlock.className = "content-image";
-
+      const imgWrap = document.createElement("div");
+      imgWrap.className = "content-image";
       const img = document.createElement("img");
       img.src = image.src;
-      img.alt = image.alt || "";
-      img.loading = "lazy";
-
-      imageBlock.appendChild(img);
-      section.appendChild(imageBlock);
+      img.alt = image.alt;
+      imgWrap.appendChild(img);
+      section.appendChild(imgWrap);
     }
 
     content.appendChild(section);
   }
 
-  function renderMenu() {
-    const current = getCurrentPage();
-    menuList.innerHTML = "";
+  function renderCV({ title, design, management }) {
+    const h2 = document.createElement("h2");
+    h2.textContent = title;
+    content.appendChild(h2);
 
+    const grid = document.createElement("section");
+    grid.className = "cv-grid";
+
+    grid.appendChild(createCVColumn("Design", design));
+    grid.appendChild(createCVColumn("Management", management));
+
+    content.appendChild(grid);
+  }
+
+  function createCVColumn(title, items) {
+    const col = document.createElement("div");
+    col.className = "cv-column";
+
+    const h3 = document.createElement("h3");
+    h3.textContent = title;
+    col.appendChild(h3);
+
+    items.forEach(({ title, content }) => {
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = title;
+
+      const body = document.createElement("div");
+      body.className = "accordion-content";
+      body.textContent = content;
+
+      details.append(summary, body);
+      col.appendChild(details);
+    });
+
+    return col;
+  }
+
+  function renderMenu() {
+    menuList.innerHTML = "";
     menuItems.forEach(({ label, slug }) => {
       const li = document.createElement("li");
-      li.className = "menu-item";
-
       const a = document.createElement("a");
       a.href = `#${slug}`;
       a.textContent = label;
-
-      if (slug === current) {
-        a.classList.add("active");
-        a.setAttribute("aria-current", "page");
-      }
-
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        navigateTo(slug);
-      });
-
-      a.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          navigateTo(slug);
-        }
-      });
-
+      if (slug === getCurrentPage()) a.classList.add("active");
       li.appendChild(a);
       menuList.appendChild(li);
     });
@@ -195,38 +215,49 @@ document.addEventListener("DOMContentLoaded", () => {
     clear(header);
     clear(content);
 
-    const pageKey = getCurrentPage();
-    const pageData = pages[pageKey];
+    const pageData = pages[getCurrentPage()];
+    if (!pageData) return;
 
-    if (pageData.layout === "hero") {
-      renderHero(pageData.hero);
-    } else {
-      renderDefault(pageData);
-    }
+    if (pageData.layout === "hero") renderHero(pageData.hero);
+      else if (pageData.layout === "cv") {
+        renderCV(pageData);
+        enhanceAccordions();
+      }
+    else renderDefault(pageData);
 
     page.classList.toggle("dark", isDarkMode);
-    themeToggle.checked = isDarkMode;
-    themeToggle.setAttribute("aria-checked", String(isDarkMode));
-
     renderMenu();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo(0, 0);
   }
 
+  function enhanceAccordions() {
+  const accordions = document.querySelectorAll(".cv-column details");
+
+  accordions.forEach((details) => {
+    const content = details.querySelector(".accordion-content");
+
+    // Open animation
+    details.addEventListener("toggle", () => {
+      if (details.open) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = "0px";
+      }
+    });
+  });
+}
+
   /* ===============================
-     Theme handling
+     Events
      =============================== */
+
+  window.addEventListener("hashchange", render);
 
   themeToggle.addEventListener("change", () => {
     isDarkMode = themeToggle.checked;
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
     page.classList.toggle("dark", isDarkMode);
-    themeToggle.setAttribute("aria-checked", String(isDarkMode));
   });
 
-  /* ===============================
-     Init
-     =============================== */
-
-  window.addEventListener("popstate", render);
   render();
 });
