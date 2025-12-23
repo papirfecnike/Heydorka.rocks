@@ -52,7 +52,7 @@ body {
 }
 
 .page {
-  max-width: 1100px;
+  max-width: flexible;
   margin: 0 auto;
   padding: var(--space-xl);
   color: var(--color-text);
