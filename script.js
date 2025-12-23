@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* =========================================================
+   * Navigation
+   * ========================================================= */
   const menuItems = [
     { label: "Welcome", slug: "index" },
     { label: "Speaking", slug: "speaking" },
@@ -8,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     { label: "About", slug: "about" },
   ];
 
+  /* =========================================================
+   * Page data
+   * ========================================================= */
   const pages = {
     index: {
       layout: "hero",
@@ -18,65 +24,231 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
 
+    /* -------------------------
+     * Speaking
+     * ------------------------- */
     speaking: {
-      layout: "default",
+      layout: "speaking",
       title: "Speaking",
-      paragraphs: ["Conference talks and workshops."],
+      intro:
+        "Check out the upcoming and previous talks that I gave on international conferences.",
+      timeline: {
+        2026: [
+          {
+            id: "ux-automation",
+            title: "No researchers were harmed in the making of this test suite",
+            conference: "React Norway 2026 (upcoming)",
+            content: [
+              "What if UX research could move as fast as modern product development — without losing its soul?",
+              "I built a fully automated UX test framework using Figma Make to capture real user behavior asynchronously.",
+              "Within one week, we collected quantitative insights from dozens of users and freed time for deep interviews."
+            ],
+            link: "https://reactnorway.com/",
+            slides: "not yet available"
+          },
+          {
+            id: "ux-it-sec",
+            title: "Safe by design: the UX of secure banking",
+            conference: "NDC Security 2026 (upcoming)",
+            content: [
+              "When it comes to banking applications, security is non-negotiable, but so is the user experience. With sensitive financial data on the line, ensuring that users interact securely with your platform is crucial.",
+              "This talk will explore how UX design can be the unsung hero in protecting banking applications from security breaches. When UX and IT security work together, users are guided safely through complex security features without frustration or error. By focusing on intuitive design, we can reduce risky behaviors like bypassing 2FA, and ultimately build trust in digital banking systems.",
+              "Let us discover how seamless UX can be your first line of defense in the fight against cyber threats, and learn why good security design is just as important as good security code."
+            ],
+            link: "https://ndcsecurity.com/agenda/safe-by-design-the-ux-of-secure-banking-0iqc/0fgm7ets5ix",
+            slides: "not yet available"
+          },
+        ],
+        2025: [
+          {
+            id: "ux-security",
+            title: "Knocking on Security's door: how good UX design protects users",
+            conference: "TDC 2025",
+            content: [
+              "When it comes to banking applications, security is non-negotiable, but so is the user experience. With sensitive financial data on the line, ensuring that users interact securely with your platform is crucial. This talk will explore how UX design can be the unsung hero in protecting banking applications from security breaches. Let us discover how seamless UX can be your first line of defense in the fight against cyber threats."
+            ],
+            link: "https://2025.trondheimdc.no/",
+            slides: "not yet available"            
+          },
+          {
+            id: "irresistible-ux",
+            title: "The irresistible UX: the psychology of brainwaves and clickbait",
+            conference: "We are developers world conference 2025",
+            content: [
+              "This talk explores how tapping into the brain’s natural wiring can enhance user experiences. By applying cognitive biases, psychological principles, and neuroscience insights, we can craft intuitive interfaces and workflows that effortlessly guide user behavior and foster habit-forming interactions. Discover strategies to minimize friction in digital products, keeping users engaged and making interactions feel second nature."
+            ],
+            link: "https://www.wearedevelopers.com/world-congress",
+            video: "https://www.wearedevelopers.com/en/videos/1584/the-irresistible-ux-the-psychology-of-brainwaves-and-clickbait"            
+          },
+          {
+            id: "irresistible-ux-ndc",
+            title: "The irresistible UX: the psychology of brainwaves and clickbait",
+            conference: "NDC Oslo 2025",
+            content: [
+              "This talk explores how tapping into the brain’s natural wiring can enhance user experiences. By applying cognitive biases, psychological principles, and neuroscience insights, we can craft intuitive interfaces and workflows that effortlessly guide user behavior and foster habit-forming interactions. Discover strategies to minimize friction in digital products, keeping users engaged and making interactions feel second nature."
+            ],
+            link: "https://ndcoslo.com/",
+            video: "https://youtu.be/VXu-2Kv0DeM?feature=shared"            
+          },
+          {
+            id: "information-arch",
+            title: "The ripple effect: how information architecture transforms your product, company, and (almost) everything",
+            conference: "NDC Melbourne 2025",
+            content: [
+              "This talk emphasizes IA's role in a company's success, using a mobile app example to illustrate challenges and solutions. A strong IA supports sustainable growth, user-friendly products, team alignment, and overall success."
+            ],
+            slides: "https://docs.google.com/presentation/d/1T7jWOPZYzimdLxi1aUvWdAnmN7hrQgWSKKATZfn-cz0/edit?usp=sharing",
+            video: "https://youtu.be/tym0tvH6730?feature=shared"            
+          },
+        ],
+        2024: [
+          {
+            id: "collab-ux-reactday",
+            title: "How to train your designer?",
+            conference: "React Day Berlin 2024",
+            content: [
+              "Cooperation between the members of the Product Trio is necessary in order to deliver high quality product, while evolving as a professional. Interesting resonation with the popular movie How to train your dragon."
+            ],
+            video: "https://gitnation.com/contents/tips-and-tricks-for-achieving-seamless-collaboration-between-developers-and-designers",
+          },
+          {
+            id: "collab-ux-stavanger",
+            title: "How to train your designer?",
+            conference: "#HelloStavanger 2024",
+            content: [
+              "Cooperation between the members of the Product Trio is necessary in order to deliver high quality product, while evolving as a professional. Interesting resonation with the popular movie How to train your dragon."
+            ],
+            link: "https://hellostavanger.no/",
+          },
+          {
+            id: "cost-ux",
+            title: "The cost of not having a designer",
+            conference: "RenderCon Kenya 2024",
+            content: [
+              "I’ll be discussing the crucial role of early design integration in engineering and business. By fostering collaboration, we can enhance user satisfaction and drive innovation. It’s a topic I’m passionate about, as design plays a vital role in shaping successful products and organizations."
+            ],
+            video: "https://youtu.be/po_Q8mj2uDY?si=J_WeQaV2k0eCLzxw",
+          },
+          {
+            id: "grow-ux",
+            title: "How to grow in UX",
+            conference: "UX Graz meetup 2024",
+            content: [
+              "It's always inspiring to explore potential UX growth journeys together, sharing ideas and learning from each other as we navigate this vast field. I’m really looking forward to meeting like-minded people and having meaningful discussions. We're all on this path, growing and evolving together!"
+            ],
+            link: "https://lnkd.in/dS6fVsyb",
+          },
+          {
+            id: "the-ripple",
+            title: "The ripple effect: how information architecture transforms your product, company, and (almost) everything",
+            conference: "World IA Day 2024",
+            content: [
+              "This talk highlights the importance of IA for a company’s success, using a mobile app company as an example to illustrate the issues and provide solutions. A well-structured IA ensures sustainable growth, aligned teams, ultimately enhancing the product, UX, and overall organization for continued success."
+            ],
+            video: "https://vimeo.com/999387071",
+            slides: "https://docs.google.com/presentation/d/1UHXEsxWJZ5wzzxjUKMzm1jiItCBck7PAG9mQQVb8DGI/edit?usp=sharing",
+          },
+          {
+            id: "collab-ux-berlin",
+            title: "How to train your designer?",
+            conference: "DroidCon Berlin 2024",
+            content: [
+              "Cooperation between the members of the Product Trio is necessary in order to deliver high quality product, while evolving as a professional. Interesting resonation with the popular movie How to train your dragon."
+            ],
+            link: "https://www.droidcon.com/2024/08/30/how-to-train-your-designer/",
+            slides: "https://docs.google.com/presentation/d/1f_WAHD8p-zqT2cvLxqmVdVwM8MEjFzdqqagIGVpwc6w/edit#slide=id.g4dfce81f19_0_45",
+          },
+        ],
+        2022: [
+          {
+            id: "flawless-flows",
+            title: "Flawless flows: The psychology of harmonious teamwork",
+            conference: "JS Conf Japan 2022",
+            content: [
+              "This presentation will explore how to pull the strings in the background so that in the end we actually DEVELOP the product."
+            ],
+            video: "https://youtu.be/MqOLF98dKdE",
+            slides: "https://docs.google.com/presentation/d/10YVYBIkyPLZcpG3xLoPD1xjdHbEa3nPMrcrVp-HYRW4/edit?usp=sharing",
+          },
+        ],
+        2020: [
+          {
+            id: "starting-thread",
+            title: "Starting a thread: pin the right questions",
+            conference: "JS Conf Mexico (2020)",
+            content: [
+              "Through my journey of learning to code, I concluded a few thoughts on how mentors should help their mentees."
+            ],
+            video: "https://youtu.be/gmjIcE97JC8",
+            slides: "https://docs.google.com/presentation/d/1kBtedOYL1cyBXvDC-6Szos2e57XygOm5LbXCJll7pao/edit?usp=sharing",
+          },
+        ]
+      }
     },
 
+    /* -------------------------
+     * Publications
+     * ------------------------- */
     publications: {
       layout: "default",
       title: "Publications",
       paragraphs: ["Articles and research publications."],
     },
 
+    /* -------------------------
+     * Testimonials
+     * ------------------------- */
     testimonials: {
       layout: "testimonials",
       title: "Testimonials",
       quotes: [
         {
           text:
-            "Dora is a highly skilled product designer who consistently focuses on outcomes and customer impact rather than just visual output. She excels at collaborating across disciplines on complex problems and reliably delivers work that exceeds stakeholder expectations. Her strength in documentation, processes, and design best practices was instrumental in building a product design team from the ground up.",
+            "Dora is a highly skilled product designer who consistently focuses on outcomes and customer impact rather than just visual output. She excels at collaborating across disciplines on complex problems and reliably delivers work that exceeds stakeholder expectations.",
           author: "Jonathan Gall, Chief Product Officer",
         },
         {
           text:
-            "Dora stands out as a rare design talent with exceptional craft, creativity, and a leadership style that fosters growth and positivity. She creates inclusive environments, turns challenges into opportunities, and serves as a strong bridge between product and engineering. Her research-driven approach ensures solutions are both feasible to build and genuinely valuable for users.",
-          author: "Christian Hartmann, Senior UX researcher",
+            "Dora stands out as a rare design talent with exceptional craft, creativity, and a leadership style that fosters growth and positivity. She creates inclusive environments and turns challenges into opportunities.",
+          author: "Christian Hartmann, Senior UX Researcher",
         },
         {
           text:
-            "Dora elevates team performance through strong collaboration, proactive leadership, and clear ownership of new initiatives. She is an outstanding meeting facilitator and actively seeks feedback, acting on it quickly to drive continuous improvement. Her reliability, availability, and willingness to support others make her a key contributor to team success.",
-          author: "Alex Amoroso PhD, Senior UX researcher",
+            "Dora elevates team performance through strong collaboration, proactive leadership, and clear ownership of new initiatives. Her reliability and availability make her a key contributor to team success.",
+          author: "Alex Amoroso PhD, Senior UX Researcher",
         },
         {
           text:
-            "Dora consistently delivers design concepts that exceed expectations while measurably improving user experience. She accelerates collaboration and iteration through structured discussions that resolve issues early and streamline handovers to development. Her problem-solving mindset, leadership, and positive attitude make her an invaluable team member.",
-          author: "Nicolas Piepenstock, Senior product manager",
+            "Dora consistently delivers design concepts that exceed expectations while measurably improving user experience. Her problem-solving mindset and positive attitude make her an invaluable team member.",
+          author: "Nicolas Piepenstock, Senior Product Manager",
         },
         {
           text:
-            "Dora is a highly professional and talented designer with a strong grasp of design processes and user flows. She excels at explaining complex concepts clearly to non-designers and provides consistently valuable feedback. Her mentorship significantly contributed to both professional and personal growth.",
-          author: "Tayzer Damasceno, Data analyst and researcher",
+            "Dora is a highly professional and talented designer with a strong grasp of design processes and user flows. Her mentorship significantly contributed to both professional and personal growth.",
+          author: "Tayzer Damasceno, Data Analyst and Researcher",
         },
         {
           text:
-            "Dora is an inspiring design leader who significantly strengthened design operations, tooling, and cross-functional collaboration within a complex organization. She championed design visibility, introduced effective critique practices, and built bridges between departments while supporting both internal and external designers. Equally strong strategically and hands-on, she delivered high-quality design solutions for technically demanding systems and made a lasting impact on both people and processes.",
-          author: "Konstantinos Partheniadis, Senior product designer (prototyper)",
+            "Dora is an inspiring design leader who significantly strengthened design operations, tooling, and cross-functional collaboration within a complex organization.",
+          author:
+            "Konstantinos Partheniadis, Senior Product Designer (Prototyper)",
         },
         {
           text:
-            "Dora is an organized, communicative educator who adapts her teaching approach to create engaging learning experiences. She successfully balances teaching and mentoring with her role as a design PM, leaving a lasting impact on students. Her guidance effectively prepares individuals for success in professional environments.",
-          author: "Alaa Salim, Teacher assistant",
+            "Dora is an organized, communicative educator who adapts her teaching approach to create engaging learning experiences and prepares individuals for professional success.",
+          author: "Alaa Salim, Teaching Assistant",
         },
       ],
     },
 
+    /* -------------------------
+     * About
+     * ------------------------- */
     about: {
       layout: "default",
       title: "About",
       paragraphs: [
-        "As I progressed in my career, I became more interested in identifying and solving challenges, both as a designer and as a curious individual.",
+        "As I progressed in my career, I became more interested in identifying and solving challenges.",
         "I focus on creating order through well-documented design systems, transparent collaboration, and pragmatic UX strategy.",
         "Outside of work, I’m inspired by music, books, and aesthetics — harmony and structure deeply influence how I approach design.",
         "Best wishes, Dora Makszy",
@@ -87,25 +259,28 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
 
+    /* -------------------------
+     * CV
+     * ------------------------- */
     cv: {
       layout: "cv",
       title: "Curriculum Vitae",
 
       design: [
         {
-          title: "Head of Design (Element Logic, 2025-current)",
+          title: "Head of Design (Element Logic, 2025–current)",
           content:
-            "Strategic advisor for the product trio, as well as enthusiastic executor of project deliveries. Mentoring, managing and motivating the amazing design team, as well as recruiting new colleagues to ensure organic growth.",
+            "Strategic advisor for the product trio, mentoring and managing the design team, recruiting new colleagues, and ensuring organic growth.",
         },
         {
-          title: "Senior UX Designer (Element Logic, 2024-2025)",
+          title: "Senior UX Designer (Element Logic, 2024–2025)",
           content:
-            "The company's biggest and most successful product - eManager, that manages AutoStore, the robotic logistics system - is developed by five different teams, and they needed a motivated designer.",
+            "Designer on eManager, the company’s largest and most successful product managing AutoStore robotic logistics.",
         },
         {
-          title: "Product Design & DesignOps Lead (Futurehome, 2022-2024)",
+          title: "Product Design & DesignOps Lead (Futurehome, 2022–2024)",
           content:
-            "Situation: hired to connect design, operations, and product. Result: improved UX, stronger design systems, and measurable cost savings.",
+            "Connected design, operations, and product; improved UX maturity, design systems, and delivered measurable cost savings.",
         },
         {
           title: "Senior Product Designer (GoTo, 2022)",
@@ -113,9 +288,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "Delivered WCAG-compliant designs under tight deadlines in distributed teams.",
         },
         {
-          title: "Design Team Leader (VDD:Live, 2020-2022)",
+          title: "Design Team Leader (VDD:Live, 2020–2022)",
           content:
-            "Built design foundations, mentored teams, and aligned UX with business goals.",
+            "Built design foundations, mentored designers, and aligned UX with business goals.",
         },
         {
           title: "Design Teacher (CodeX, 2021)",
@@ -123,12 +298,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "Taught design thinking, UX, research, and prototyping in an intensive summer camp.",
         },
         {
-          title: "Senior Business Analyst & UX Designer (IBM, 2018-2019)",
+          title: "Senior Business Analyst & UX Designer (IBM, 2018–2019)",
           content:
             "Translated global business requirements into user-centered digital services.",
         },
         {
-          title: "UI Designer (NNG, 2007-2012)",
+          title: "UI Designer (NNG, 2007–2012)",
           content:
             "Worked on navigation software, UI kits, and early iPhone pedestrian navigation.",
         },
@@ -136,39 +311,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
       management: [
         {
-          title: "Senior Design Project Manager (Supercharge, 2019-2020)",
+          title: "Senior Design Project Manager (Supercharge, 2019–2020)",
           content:
-            "Led UX/UI design and development for Ericsson's MWC 2020 sales demo: conducted user interviews and analyzed data, while coordinating schedules for UX/UI professionals and applying various UX methodologies, (usability testing, wireframing, accessibility evaluation, journey mapping). Negotiated with clients, administrated projects and managed people across projects according to project requirements, having the company’s best interest in focus. Participated in resource management for efficient allocation, and addressed and eliminated blocker issues to meet project goals and KPIs.",
+            "Led UX/UI design and development for Ericsson’s MWC 2020 sales demo, coordinating teams, research, and delivery.",
         },
         {
-          title: "Development Team Leader (Commsignia, 2017-2018)",
+          title: "Development Team Leader (Commsignia, 2017–2018)",
           content:
-            "Led developer teams specializing in C, C++, and JAVA for V2X solution. Optimized resource allocation through agile methodologies. Provided clear data analytics to management. Formulated long-term organizational development plan and established OKRs.",
+            "Led developer teams for V2X solutions, optimized resource allocation, and established OKRs.",
         },
         {
-          title: "Project Manager (AImotive, 2016-2017)",
+          title: "Project Manager (AImotive, 2016–2017)",
           content:
-            "Key leadership role in Volvo self-driving car project: developed software in collaboration with Nvidia. Responsible for project plans, resource management, development, QA, and procurement, while managing a diverse team with various nationalities, coordinated travel and conducted negotiations. Provided leadership and coaching to team of 9-12 engineers.",
+            "Leadership role in Volvo self-driving car project, managing cross-functional international teams.",
         },
         {
-          title: "Scrum Master (NNG, 2014-2016)",
+          title: "Scrum Master (NNG, 2014–2016)",
           content:
-            "Actively participated in resource allocation and process enhancement - negotiated between core development and project teams. Promoted knowledge sharing and transparency, with which the efficiency increased and delivery time decreased. Facilitated implementation of agile processes and routines and reported weekly improvements of 12 core teams to upper management. Adhered to preset Key Performance Indicators (KPIs) to ensure timely project delivery.",
+            "Implemented agile processes, improved transparency, and reduced delivery time across 12 teams.",
         },
       ],
 
       education: [
         {
           title:
-            "MBA (Budapest University of Technology and Economics, 2010-2013)",
+            "MBA – Budapest University of Technology and Economics (2010–2013)",
           content:
-            "Studies: Accounting and Finance, Project- and Technology Management, Law, Economics, and Marketing, HR and Organizational behaviour. Thesis: “How to manage a small company until getting the first investment”. I established a company, so I had something to write about. Later the business idea became successful and received a capital injection.",
+            "Accounting, finance, project management, law, economics, marketing, and HR. Thesis on early-stage company management.",
         },
         {
           title:
-            "Bachelor’s Degree (University of Hertfordshire, 2004-2008)",
+            "Bachelor’s Degree – University of Hertfordshire (2004–2008)",
           content:
-            "Studies: Accounting and quantitative methods, Project management and Economics, Business law and Marketing. Thesis: “How to motivate and manage creative colleagues - both in the case of a small and a big company”.",
+            "Business, economics, marketing, and project management. Thesis on motivating creative teams.",
         },
       ],
 
@@ -176,26 +351,32 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           title: "Hard skills",
           content:
-            "Public speaking: Fluent in English and Hungarian, improving Norwegian, Good presentation skills (conferences, mentoring, teaching), Design systems, Information architecture, Design operations, Documentation",
+            "Public speaking, design systems, information architecture, design operations, documentation.",
         },
         {
           title: "Soft skills",
           content:
-            "Leadership: business analysis, reporting, coaching, supporting problem-solving, decision making, people management, public speaking and knowledge sharing.",
+            "Leadership, coaching, decision-making, people management, collaboration.",
         },
       ],
     },
 
+    /* -------------------------
+     * 404
+     * ------------------------- */
     404: {
       layout: "default",
       title: "404 — User journey incomplete",
       paragraphs: [
         "Looks like this path wasn’t part of the happy flow.",
-        "Maybe try the menu, or head back home and pretend this never happened.",
+        "Maybe try the menu, or head back home.",
       ],
     },
   };
 
+  /* =========================================================
+   * DOM references & helpers
+   * ========================================================= */
   const body = document.body;
   const header = document.getElementById("header");
   const content = document.getElementById("content");
@@ -204,15 +385,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isDarkMode = localStorage.getItem("theme") === "dark";
 
-  function getCurrentPage() {
+  const clear = (el) => (el.innerHTML = "");
+
+  const getCurrentPage = () => {
     const slug = window.location.hash.slice(1);
     return pages[slug] ? slug : slug ? "404" : "index";
-  }
+  };
 
-  function clear(el) {
-    el.innerHTML = "";
-  }
-
+  /* =========================================================
+   * Renderers
+   * ========================================================= */
   function renderHero({ title, text }) {
     header.innerHTML = `<h1>${title}</h1><p>${text}</p>`;
   }
@@ -221,36 +403,99 @@ document.addEventListener("DOMContentLoaded", () => {
     const section = document.createElement("section");
     section.className = "content-section";
 
-    const textBlock = document.createElement("div");
-    textBlock.innerHTML = `<h2>${title}</h2>${paragraphs
+    const text = document.createElement("div");
+    text.innerHTML = `<h2>${title}</h2>${paragraphs
       .map((p) => `<p>${p}</p>`)
       .join("")}`;
-    section.appendChild(textBlock);
+
+    section.appendChild(text);
 
     if (image) {
-      const imgWrap = document.createElement("div");
-      imgWrap.className = "content-image";
-      imgWrap.innerHTML = `<img src="${image.src}" alt="${image.alt}" />`;
-      section.appendChild(imgWrap);
+      const img = document.createElement("div");
+      img.className = "content-image";
+      img.innerHTML = `<img src="${image.src}" alt="${image.alt}" />`;
+      section.appendChild(img);
     }
 
     content.appendChild(section);
   }
+
+  function renderSpeaking({ title, intro, timeline }) {
+    const section = document.createElement("section");
+    section.innerHTML = `<h2>${title}</h2>`;
+
+    const layout = document.createElement("div");
+    layout.className = "speaking-layout";
+
+    /* ---------------- Left: Timeline ---------------- */
+    const nav = document.createElement("nav");
+    nav.className = "speaking-timeline";
+    nav.setAttribute("aria-label", "Speaking timeline");
+
+    Object.keys(timeline)
+      .sort((a, b) => b - a)
+      .forEach((year) => {
+        if (!timeline[year].length) return;
+
+        const yearBlock = document.createElement("div");
+        yearBlock.className = "speaking-year";
+        yearBlock.innerHTML = `<h3>${year}</h3>`;
+
+        timeline[year].forEach((talk) => {
+          const button = document.createElement("button");
+          button.className = "speaking-item";
+          button.innerHTML = `
+            <span class="speaking-title">${talk.title}</span>
+            <span class="speaking-conf">${talk.conference}</span>
+          `;
+
+          button.addEventListener("click", () =>
+            renderSpeakingDetails(talk)
+          );
+
+          yearBlock.appendChild(button);
+        });
+
+        nav.appendChild(yearBlock);
+      });
+
+    /* ---------------- Right: Details ---------------- */
+    const details = document.createElement("div");
+    details.className = "speaking-details";
+    details.innerHTML = `<p class="speaking-placeholder">${intro}</p>`;
+
+    layout.append(nav, details);
+    section.appendChild(layout);
+    content.appendChild(section);
+
+    /* ---------------- Details renderer ---------------- */
+    function renderSpeakingDetails({ title, conference, content, link, slides, video }) {
+      details.innerHTML = `
+        <h3>${title}</h3>
+        <p class="speaking-meta">${conference}</p>
+        ${content.map((p) => `<p>${p}</p>`).join("")}
+        <div class="speaking-links">
+          ${link ? `<a href="${link}" target="_blank">Conference page</a>` : ""}
+          ${slides ? `<a href="${slides}" target="_blank">Slides</a>` : ""}
+          ${video ? `<a href="${video}" target="_blank">Video</a>` : ""}
+        </div>
+      `;
+    }
+  }
+
 
   function renderTestimonials({ title, quotes }) {
     const section = document.createElement("section");
     section.innerHTML = `<h2>${title}</h2>`;
 
     quotes.forEach(({ text, author }) => {
-      const quote = document.createElement("figure");
-      quote.className = "quote";
-
-      quote.innerHTML = `
+      const figure = document.createElement("figure");
+      figure.className = "quote";
+      figure.innerHTML = `
         <blockquote class="quote-text">“${text}”</blockquote>
         <figcaption class="quote-author">— ${author}</figcaption>
       `;
-
-      section.appendChild(quote);
+      section.appendChild(figure);
     });
 
     content.appendChild(section);
@@ -258,47 +503,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderCV({ title, design, management, education, skills }) {
     content.innerHTML += `<h2>${title}</h2>`;
-
-    const workGrid = document.createElement("section");
-    workGrid.className = "cv-grid";
-    workGrid.append(
-      createCVColumn("Design", design),
-      createCVColumn("Management", management)
-    );
-    content.appendChild(workGrid);
-
+    content.appendChild(createGrid("Design", design, "Management", management));
     content.appendChild(
       Object.assign(document.createElement("div"), { className: "cv-spacer" })
     );
-
-    const extraGrid = document.createElement("section");
-    extraGrid.className = "cv-grid";
-    extraGrid.append(
-      createCVColumn("Education", education),
-      createCVColumn("Skills", skills)
+    content.appendChild(
+      createGrid("Education", education, "Skills", skills)
     );
-    content.appendChild(extraGrid);
   }
 
-  function createCVColumn(title, items) {
+  function createGrid(titleA, itemsA, titleB, itemsB) {
+    const grid = document.createElement("section");
+    grid.className = "cv-grid";
+    grid.append(createColumn(titleA, itemsA), createColumn(titleB, itemsB));
+    return grid;
+  }
+
+  function createColumn(title, items) {
     const col = document.createElement("div");
     col.className = "cv-column";
     col.innerHTML = `<h3>${title}</h3>`;
     items.forEach(({ title, content }) => {
-      col.innerHTML += `<details><summary>${title}</summary><div class="accordion-content">${content}</div></details>`;
+      col.innerHTML += `
+        <details>
+          <summary>${title}</summary>
+          <div class="accordion-content">${content}</div>
+        </details>
+      `;
     });
     return col;
   }
 
   function renderMenu() {
-    menuList.innerHTML = "";
-    menuItems.forEach(({ label, slug }) => {
-      menuList.innerHTML += `<li><a href="#${slug}" class="${
-        slug === getCurrentPage() ? "active" : ""
-      }">${label}</a></li>`;
-    });
+    menuList.innerHTML = menuItems
+      .map(
+        ({ label, slug }) =>
+          `<li><a href="#${slug}" class="${
+            slug === getCurrentPage() ? "active" : ""
+          }">${label}</a></li>`
+      )
+      .join("");
   }
 
+  /* =========================================================
+   * Main render
+   * ========================================================= */
   function render() {
     clear(header);
     clear(content);
@@ -306,10 +555,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const page = pages[getCurrentPage()];
     if (!page) return;
 
-  if (page.layout === "hero") renderHero(page.hero);
-  else if (page.layout === "cv") renderCV(page);
-  else if (page.layout === "testimonials") renderTestimonials(page);
-  else renderDefault(page);
+    if (page.layout === "hero") renderHero(page.hero);
+    else if (page.layout === "speaking") renderSpeaking(page);
+    else if (page.layout === "testimonials") renderTestimonials(page);
+    else if (page.layout === "cv") renderCV(page);
+    else renderDefault(page);
 
     body.classList.toggle("dark", isDarkMode);
     themeToggle.checked = isDarkMode;
@@ -318,6 +568,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo(0, 0);
   }
 
+  /* =========================================================
+   * Events
+   * ========================================================= */
   themeToggle.addEventListener("change", () => {
     isDarkMode = themeToggle.checked;
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
