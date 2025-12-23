@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* ===============================
+     Navigation & Pages
+     =============================== */
+
   const menuItems = [
     { label: "Welcome", slug: "index" },
     { label: "Speaking", slug: "speaking" },
@@ -46,11 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
       layout: "default",
       title: "404 — User journey incomplete",
       paragraphs: [
-        "Looks like this path wasn’t part of the happy flow.",
-        "Maybe try the menu, or head back home and pretend this never happened.",
+       "Looks like this path wasn’t part of the happy flow.",
+       "Maybe try the menu, or head back home and pretend this never happened.",
       ],
     },
   };
+
+  /* ===============================
+     DOM References
+     =============================== */
 
   const page = document.getElementById("page");
   const header = document.getElementById("header");
@@ -60,10 +68,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isDarkMode = localStorage.getItem("theme") === "dark";
 
+  /* ===============================
+     Routing Helpers
+     =============================== */
+
   function getCurrentPage() {
-    const slug = window.location.hash.replace("#", "");
+    const slug = window.location.hash.slice(1);
+
     if (!slug) return "index";
-    return pages[slug] ? slug : "404";
+    if (Object.prototype.hasOwnProperty.call(pages, slug)) {
+      return slug;
+    }
+    return "404";
   }
 
   function navigateTo(slug) {
@@ -74,6 +90,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function clear(el) {
     el.innerHTML = "";
   }
+
+  /* ===============================
+     Renderers
+     =============================== */
 
   function renderHero({ title, text }) {
     const h1 = document.createElement("h1");
@@ -138,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentPage = getCurrentPage();
     const pageData = pages[currentPage];
 
-    if (pageData.layout === "hero") {
+    if (pageData.layout === "hero" && pageData.hero) {
       renderHero(pageData.hero);
     } else {
       renderDefault(pageData);
@@ -150,9 +170,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderMenu();
 
-    // Scroll reset on navigation
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  /* ===============================
+     Theme Handling
+     =============================== */
 
   themeToggle.addEventListener("change", () => {
     isDarkMode = themeToggle.checked;
@@ -161,8 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.setAttribute("aria-checked", String(isDarkMode));
   });
 
-  window.addEventListener("popstate", render);
+  /* ===============================
+     Init
+     =============================== */
 
-  // Initial sync on load
+  window.addEventListener("popstate", render);
   render();
 });
