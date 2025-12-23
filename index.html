@@ -10,33 +10,30 @@
 
   <body>
     <div id="page" class="page">
-      <!-- Header -->
-      <header class="site-header">
-        <!-- Navigation -->
-        <nav class="main-nav" aria-label="Main navigation">
-          <ul id="menuList" class="menu"></ul>
-        </nav>
+      <!-- Primary navigation -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul id="menuList" class="menu"></ul>
+      </nav>
 
-        <!-- Theme toggle -->
-        <div class="theme-switch">
-          <input
-            type="checkbox"
-            id="themeToggle"
-            class="theme-switch__input"
-            role="switch"
-            aria-label="Toggle dark mode"
-            aria-checked="false"
-          />
-          <label for="themeToggle" class="theme-switch__label">
-            <span class="theme-switch__icon">☼</span>
-            <span class="theme-switch__icon">⏾</span>
-            <span class="theme-switch__slider"></span>
-          </label>
-        </div>
-      </header>
+      <!-- Theme toggle -->
+      <div class="theme-switch">
+        <input
+          type="checkbox"
+          id="themeToggle"
+          class="theme-switch__input"
+          role="switch"
+          aria-label="Toggle dark mode"
+          aria-checked="false"
+        />
+        <label for="themeToggle" class="theme-switch__label">
+          <span class="theme-switch__icon">☼</span>
+          <span class="theme-switch__icon">⏾</span>
+          <span class="theme-switch__slider"></span>
+        </label>
+      </div>
 
-      <!-- Page hero -->
-      <section id="header" class="header"></section>
+      <!-- Hero / dynamic header -->
+      <header id="header" class="header"></header>
 
       <!-- Main content -->
       <main id="content" class="content"></main>
