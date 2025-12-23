@@ -128,13 +128,15 @@ body {
 ----------------------------- */
 .content-section {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 300px;
   gap: var(--space-l);
+  align-items: start;
 }
 
 .content-image img {
-  max-width: 300px;
   width: 100%;
+  height: auto;
+  display: block;
   border-radius: 8px;
 }
 
@@ -206,33 +208,36 @@ body {
 }
 
 /* =========================================================
-   SPEAKING (NEW)
-   Two-column master–detail layout
+   MASTER–DETAIL (GENERIC)
 ========================================================= */
-
-/* Main layout: LEFT timeline | RIGHT details */
-.speaking-layout {
+.master-detail-layout {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: var(--space-xl);
   align-items: start;
 }
 
-/* LEFT: timeline */
-.speaking-timeline {
+.master-detail-nav {
   border-right: 1px solid var(--color-border-subtle);
   padding-right: var(--space-l);
 }
 
-.speaking-year {
+.master-detail-group {
   margin-bottom: var(--space-l);
 }
 
-.speaking-year h3 {
-  margin-bottom: var(--space-s);
+.master-detail-details {
+  top: var(--space-xl);
 }
 
-/* Timeline items */
+.master-detail-placeholder {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* =========================================================
+   SPEAKING
+========================================================= */
 .speaking-item {
   display: block;
   width: 100%;
@@ -241,44 +246,15 @@ body {
   padding: var(--space-s) 0;
   text-align: left;
   cursor: pointer;
-  color: inherit;
-}
-
-.speaking-item:hover .speaking-title {
-  text-decoration: underline;
 }
 
 .speaking-title {
-  display: block;
   font-weight: 500;
 }
 
 .speaking-conf {
-  display: block;
   font-size: 0.85rem;
   opacity: 0.7;
-}
-
-/* RIGHT: details */
-.speaking-details {
-  position: sticky;
-  top: var(--space-xl);
-  align-self: start;
-}
-
-.speaking-placeholder {
-  opacity: 0.6;
-  font-style: italic;
-}
-
-.speaking-meta {
-  opacity: 0.7;
-  margin-bottom: var(--space-m);
-}
-
-/* Links under details — vertical stack */
-.speaking-links {
-  margin-top: var(--space-m);
 }
 
 .speaking-links a {
@@ -286,20 +262,55 @@ body {
   margin-bottom: var(--space-s);
 }
 
-/* ----------------------------
-   Responsive
------------------------------ */
-@media (max-width: 900px) {
-  .cv-grid,
-  .content-section,
-  .speaking-layout {
+.master-detail-layout.speaking .master-detail-details {
+  position: sticky;
+  top: var(--space-xl);
+}
+
+/* =========================================================
+   PUBLICATIONS
+========================================================= */
+.publications-item {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: var(--space-s) 0;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.publications-item:hover {
+  text-decoration: underline;
+}
+
+.master-detail-layout.publications .master-detail-nav {
+  position: sticky;
+  top: var(--space-xl);
+  align-self: start;
+}
+
+.master-detail-layout.publications .master-detail-details {
+  position: static;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 700px) {
+  .content-section {
     grid-template-columns: 1fr;
   }
 
-  .speaking-timeline {
+  .content-image {
+    max-width: 100%;
+  }
+}
+
+  .master-detail-nav {
     border-right: none;
     border-bottom: 1px solid var(--color-border-subtle);
     padding-bottom: var(--space-m);
     margin-bottom: var(--space-m);
   }
-}
