@@ -225,6 +225,12 @@ details[open] .accordion-content {
   transform: rotate(90deg);
 }
 
+/* Spacing */
+
+.cv-spacer {
+  height: var(--space-xl);
+}
+
 /* ===============================
    Responsive
    =============================== */
