@@ -1,6 +1,6 @@
-/* =====================================================
+/* ===============================
    Design tokens
-   ===================================================== */
+   =============================== */
 
 :root {
   --color-bg: #ffffff;
@@ -13,28 +13,20 @@
 
   --font-size-h1: 40px;
   --font-size-h2: 28px;
-  --font-size-body: 16px;
+  --font-size-h3: 20px;
 
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-
-  --space-xs: 4px;
   --space-s: 8px;
   --space-m: 16px;
   --space-l: 32px;
   --space-xl: 48px;
-  --space-2xl: 64px;
 
   --radius-pill: 999px;
-
-  --transition-fast: 0.15s ease;
   --transition-base: 0.3s ease;
 }
 
-/* =====================================================
+/* ===============================
    Dark mode
-   ===================================================== */
+   =============================== */
 
 .page.dark {
   --color-bg: var(--color-bg-dark);
@@ -42,9 +34,9 @@
   --color-border-subtle: rgba(255, 255, 255, 0.12);
 }
 
-/* =====================================================
-   Reset & base
-   ===================================================== */
+/* ===============================
+   Base
+   =============================== */
 
 *,
 *::before,
@@ -55,96 +47,70 @@
 body {
   margin: 0;
   font-family: var(--font-family-base);
-  font-size: var(--font-size-body);
   line-height: 1.6;
   background-color: var(--color-bg);
 }
-
-/* =====================================================
-   Page layout
-   ===================================================== */
 
 .page {
   max-width: flexible;
   margin: 0 auto;
   padding: var(--space-xl);
   color: var(--color-text);
-  background-color: var(--color-bg);
-  transition: background-color var(--transition-base),
-    color var(--transition-base);
 }
 
-/* =====================================================
+/* ===============================
    Typography
-   ===================================================== */
+   =============================== */
 
 h1 {
   font-size: var(--font-size-h1);
-  font-weight: var(--font-weight-bold);
-  margin: 0 0 var(--space-m);
+  margin-bottom: var(--space-m);
 }
 
 h2 {
   font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-bold);
-  margin: 0 0 var(--space-m);
+  margin-bottom: var(--space-l);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--space-m);
 }
 
 p {
-  margin: 0 0 var(--space-m);
+  margin-bottom: var(--space-m);
   max-width: 640px;
 }
 
-/* =====================================================
+/* ===============================
    Navigation
-   ===================================================== */
-
-.main-nav {
-  margin-bottom: var(--space-xl);
-}
+   =============================== */
 
 .menu {
-  list-style: none;
   display: flex;
   gap: var(--space-l);
+  list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.menu-item a {
-  position: relative;
+.menu a {
   text-decoration: none;
   color: inherit;
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
 }
 
-.menu-item a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background-color: currentColor;
-  transition: width var(--transition-fast);
+.menu a.active {
+  font-weight: 700;
 }
 
-.menu-item a.active {
-  font-weight: var(--font-weight-bold);
-}
-
-.menu-item a.active::after {
-  width: 100%;
-}
-
-/* =====================================================
+/* ===============================
    Theme switch
-   ===================================================== */
+   =============================== */
 
 .theme-switch {
   position: absolute;
-  top: var(--space-l);
-  right: var(--space-l);
+  top: var(--space-m);
+  right: var(--space-m);
 }
 
 .theme-switch__input {
@@ -152,24 +118,15 @@ p {
 }
 
 .theme-switch__label {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 56px;
   height: 28px;
-  padding: 0 var(--space-s);
-  background-color: #cccccc;
+  background: #ccc;
   border-radius: var(--radius-pill);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
   cursor: pointer;
-}
-
-.page.dark .theme-switch__label {
-  background-color: #2a2a2a;
-}
-
-.theme-switch__icon {
-  font-size: 14px;
+  position: relative;
 }
 
 .theme-switch__slider {
@@ -178,7 +135,7 @@ p {
   left: 3px;
   width: 22px;
   height: 22px;
-  background-color: #ffffff;
+  background: #fff;
   border-radius: 50%;
   transition: transform var(--transition-base);
 }
@@ -189,59 +146,92 @@ p {
   transform: translateX(28px);
 }
 
-/* =====================================================
-   Sections
-   ===================================================== */
-
-.header {
-  margin-bottom: var(--space-2xl);
-}
-
-.content {
-  margin-bottom: var(--space-2xl);
-}
-
-/* =====================================================
-   Content layout (About page)
-   ===================================================== */
+/* ===============================
+   About layout
+   =============================== */
 
 .content-section {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-l);
-  align-items: start;
-}
-
-.content-text {
-  max-width: 640px;
 }
 
 .content-image img {
+  max-width: 600px;
   width: 100%;
-  max-width: 300px;
-  height: auto;
-  display: block;
-  border-radius: 24px;
+  border-radius: 8px;
 }
 
-/* Responsive fallback */
-@media (max-width: 768px) {
+/* ===============================
+   CV layout
+   =============================== */
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.cv-column details {
+  border-top: 1px solid var(--color-border-subtle);
+  padding: var(--space-s) 0;
+}
+
+.cv-column summary {
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+}
+
+.cv-column summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-content {
+  margin-top: var(--space-s);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0.9;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease;
+}
+
+/* Open state */
+details[open] .accordion-content {
+  opacity: 0.9;
+}
+
+.cv-column summary {
+  position: relative;
+  padding-right: 24px;
+  cursor: pointer;
+}
+
+/* Chevron */
+.cv-column summary::after {
+  content: "›";
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: rotate(0deg);
+  transition: transform 0.25s ease;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Rotate chevron when open */
+.cv-column details[open] > summary::after {
+  transform: rotate(90deg);
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+
+@media (max-width: 900px) {
+  .cv-grid,
   .content-section {
     grid-template-columns: 1fr;
   }
-
-  .content-image img {
-    max-width: 100%;
-  }
-}
-
-/* =====================================================
-   Footer
-   ===================================================== */
-
-.footer {
-  font-size: 14px;
-  opacity: 0.6;
-  border-top: 1px solid var(--color-border-subtle);
-  padding-top: var(--space-m);
 }
