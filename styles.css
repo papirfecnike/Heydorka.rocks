@@ -46,6 +46,22 @@ body {
   padding: var(--space-xl);
 }
 
+/* ----------------------------
+   Navigation
+----------------------------- */
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-bg);
+  padding-top: var(--space-m);
+}
+
+/* Ensure menu doesn’t jump visually */
+.menu {
+  margin-bottom: var(--space-m);
+}
+
 .menu {
   display: flex;
   gap: var(--space-l);
@@ -64,6 +80,9 @@ body {
   font-weight: 700;
 }
 
+/* ----------------------------
+   Theme switch
+----------------------------- */
 .theme-switch {
   position: absolute;
   top: var(--space-m);
@@ -104,6 +123,9 @@ body {
   transform: translateX(28px);
 }
 
+/* ----------------------------
+   Default content
+----------------------------- */
 .content-section {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -116,6 +138,9 @@ body {
   border-radius: 8px;
 }
 
+/* ----------------------------
+   CV
+----------------------------- */
 .cv-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -131,19 +156,12 @@ body {
   cursor: pointer;
   font-weight: 500;
   list-style: none;
+  position: relative;
+  padding-right: 24px;
 }
 
 .cv-column summary::-webkit-details-marker {
   display: none;
-}
-
-.accordion-content {
-  margin-top: var(--space-s);
-}
-
-.cv-column summary {
-  position: relative;
-  padding-right: 24px;
 }
 
 .cv-column summary::after {
@@ -158,10 +176,17 @@ body {
   transform: rotate(90deg);
 }
 
+.accordion-content {
+  margin-top: var(--space-s);
+}
+
 .cv-spacer {
   height: var(--space-xl);
 }
 
+/* ----------------------------
+   Testimonials
+----------------------------- */
 .quote {
   padding: var(--space-l);
   margin-bottom: var(--space-l);
@@ -180,9 +205,101 @@ body {
   opacity: 0.8;
 }
 
+/* =========================================================
+   SPEAKING (NEW)
+   Two-column master–detail layout
+========================================================= */
+
+/* Main layout: LEFT timeline | RIGHT details */
+.speaking-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* LEFT: timeline */
+.speaking-timeline {
+  border-right: 1px solid var(--color-border-subtle);
+  padding-right: var(--space-l);
+}
+
+.speaking-year {
+  margin-bottom: var(--space-l);
+}
+
+.speaking-year h3 {
+  margin-bottom: var(--space-s);
+}
+
+/* Timeline items */
+.speaking-item {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: var(--space-s) 0;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+
+.speaking-item:hover .speaking-title {
+  text-decoration: underline;
+}
+
+.speaking-title {
+  display: block;
+  font-weight: 500;
+}
+
+.speaking-conf {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* RIGHT: details */
+.speaking-details {
+  position: sticky;
+  top: var(--space-xl);
+  align-self: start;
+}
+
+.speaking-placeholder {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.speaking-meta {
+  opacity: 0.7;
+  margin-bottom: var(--space-m);
+}
+
+/* Links under details — vertical stack */
+.speaking-links {
+  margin-top: var(--space-m);
+}
+
+.speaking-links a {
+  display: block;
+  margin-bottom: var(--space-s);
+}
+
+/* ----------------------------
+   Responsive
+----------------------------- */
 @media (max-width: 900px) {
   .cv-grid,
-  .content-section {
+  .content-section,
+  .speaking-layout {
     grid-template-columns: 1fr;
+  }
+
+  .speaking-timeline {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-m);
+    margin-bottom: var(--space-m);
   }
 }
