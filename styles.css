@@ -65,7 +65,7 @@ body {
    ===================================================== */
 
 .page {
-  max-width: 960px;
+  max-width: flexible;
   margin: 0 auto;
   padding: var(--space-xl);
   color: var(--color-text);
