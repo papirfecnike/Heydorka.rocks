@@ -31,9 +31,45 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     testimonials: {
-      layout: "default",
+      layout: "testimonials",
       title: "Testimonials",
-      paragraphs: ["Education and professional background."],
+      quotes: [
+        {
+          text:
+            "Dora is a highly skilled product designer who consistently focuses on outcomes and customer impact rather than just visual output. She excels at collaborating across disciplines on complex problems and reliably delivers work that exceeds stakeholder expectations. Her strength in documentation, processes, and design best practices was instrumental in building a product design team from the ground up.",
+          author: "Jonathan Gall, Chief Product Officer",
+        },
+        {
+          text:
+            "Dora stands out as a rare design talent with exceptional craft, creativity, and a leadership style that fosters growth and positivity. She creates inclusive environments, turns challenges into opportunities, and serves as a strong bridge between product and engineering. Her research-driven approach ensures solutions are both feasible to build and genuinely valuable for users.",
+          author: "Christian Hartmann, Senior UX researcher",
+        },
+        {
+          text:
+            "Dora elevates team performance through strong collaboration, proactive leadership, and clear ownership of new initiatives. She is an outstanding meeting facilitator and actively seeks feedback, acting on it quickly to drive continuous improvement. Her reliability, availability, and willingness to support others make her a key contributor to team success.",
+          author: "Alex Amoroso PhD, Senior UX researcher",
+        },
+        {
+          text:
+            "Dora consistently delivers design concepts that exceed expectations while measurably improving user experience. She accelerates collaboration and iteration through structured discussions that resolve issues early and streamline handovers to development. Her problem-solving mindset, leadership, and positive attitude make her an invaluable team member.",
+          author: "Nicolas Piepenstock, Senior product manager",
+        },
+        {
+          text:
+            "Dora is a highly professional and talented designer with a strong grasp of design processes and user flows. She excels at explaining complex concepts clearly to non-designers and provides consistently valuable feedback. Her mentorship significantly contributed to both professional and personal growth.",
+          author: "Tayzer Damasceno, Data analyst and researcher",
+        },
+        {
+          text:
+            "Dora is an inspiring design leader who significantly strengthened design operations, tooling, and cross-functional collaboration within a complex organization. She championed design visibility, introduced effective critique practices, and built bridges between departments while supporting both internal and external designers. Equally strong strategically and hands-on, she delivered high-quality design solutions for technically demanding systems and made a lasting impact on both people and processes.",
+          author: "Konstantinos Partheniadis, Senior product designer (prototyper)",
+        },
+        {
+          text:
+            "Dora is an organized, communicative educator who adapts her teaching approach to create engaging learning experiences. She successfully balances teaching and mentoring with her role as a design PM, leaving a lasting impact on students. Her guidance effectively prepares individuals for success in professional environments.",
+          author: "Alaa Salim, Teacher assistant",
+        },
+      ],
     },
 
     about: {
@@ -201,6 +237,25 @@ document.addEventListener("DOMContentLoaded", () => {
     content.appendChild(section);
   }
 
+  function renderTestimonials({ title, quotes }) {
+    const section = document.createElement("section");
+    section.innerHTML = `<h2>${title}</h2>`;
+
+    quotes.forEach(({ text, author }) => {
+      const quote = document.createElement("figure");
+      quote.className = "quote";
+
+      quote.innerHTML = `
+        <blockquote class="quote-text">“${text}”</blockquote>
+        <figcaption class="quote-author">— ${author}</figcaption>
+      `;
+
+      section.appendChild(quote);
+    });
+
+    content.appendChild(section);
+  }
+
   function renderCV({ title, design, management, education, skills }) {
     content.innerHTML += `<h2>${title}</h2>`;
 
@@ -251,9 +306,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const page = pages[getCurrentPage()];
     if (!page) return;
 
-    if (page.layout === "hero") renderHero(page.hero);
-    else if (page.layout === "cv") renderCV(page);
-    else renderDefault(page);
+  if (page.layout === "hero") renderHero(page.hero);
+  else if (page.layout === "cv") renderCV(page);
+  else if (page.layout === "testimonials") renderTestimonials(page);
+  else renderDefault(page);
 
     body.classList.toggle("dark", isDarkMode);
     themeToggle.checked = isDarkMode;
