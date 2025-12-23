@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  /* ===============================
+     Navigation & Pages
+     =============================== */
+
   const menuItems = [
     { label: "Welcome", slug: "index" },
     { label: "Speaking", slug: "speaking" },
@@ -42,7 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "About",
       paragraphs: ["Designer and product thinker."],
     },
+    404: {
+      layout: "default",
+      title: "404 — User journey incomplete",
+      paragraphs: [
+       "Looks like this path wasn’t part of the happy flow.",
+       "Maybe try the menu, or head back home and pretend this never happened.",
+      ],
+    },
   };
+
+  /* ===============================
+     DOM References
+     =============================== */
 
   const page = document.getElementById("page");
   const header = document.getElementById("header");
@@ -52,19 +68,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isDarkMode = localStorage.getItem("theme") === "dark";
 
+  /* ===============================
+     Routing Helpers
+     =============================== */
+
   function getCurrentPage() {
-    return window.location.hash.replace("#", "") || "index";
+    const slug = window.location.hash.slice(1);
+
+    if (!slug) return "index";
+    if (Object.prototype.hasOwnProperty.call(pages, slug)) {
+      return slug;
+    }
+    return "404";
+  }
+
+  function navigateTo(slug) {
+    history.pushState({}, "", `#${slug}`);
+    render();
   }
 
   function clear(el) {
     el.innerHTML = "";
   }
 
+  /* ===============================
+     Renderers
+     =============================== */
+
   function renderHero({ title, text }) {
     const h1 = document.createElement("h1");
     h1.textContent = title;
+
     const p = document.createElement("p");
     p.textContent = text;
+
     header.append(h1, p);
   }
 
@@ -72,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const h2 = document.createElement("h2");
     h2.textContent = title;
     content.appendChild(h2);
+
     paragraphs.forEach((text) => {
       const p = document.createElement("p");
       p.textContent = text;
@@ -93,13 +131,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (slug === current) {
         a.classList.add("active");
+        a.setAttribute("aria-current", "page");
       }
 
-      a.onclick = (e) => {
+      a.addEventListener("click", (e) => {
         e.preventDefault();
-        history.pushState({}, "", `#${slug}`);
-        render();
-      };
+        navigateTo(slug);
+      });
+
+      a.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          navigateTo(slug);
+        }
+      });
 
       li.appendChild(a);
       menuList.appendChild(li);
@@ -110,10 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
     clear(header);
     clear(content);
 
-    const pageData = pages[getCurrentPage()];
-    if (!pageData) return;
+    const currentPage = getCurrentPage();
+    const pageData = pages[currentPage];
 
-    if (pageData.layout === "hero") {
+    if (pageData.layout === "hero" && pageData.hero) {
       renderHero(pageData.hero);
     } else {
       renderDefault(pageData);
@@ -124,16 +169,25 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.setAttribute("aria-checked", String(isDarkMode));
 
     renderMenu();
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  themeToggle.onchange = () => {
+  /* ===============================
+     Theme Handling
+     =============================== */
+
+  themeToggle.addEventListener("change", () => {
     isDarkMode = themeToggle.checked;
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
     page.classList.toggle("dark", isDarkMode);
     themeToggle.setAttribute("aria-checked", String(isDarkMode));
-  };
+  });
+
+  /* ===============================
+     Init
+     =============================== */
 
   window.addEventListener("popstate", render);
-
   render();
 });
