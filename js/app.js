@@ -4,293 +4,342 @@ import { testimonials } from "./data/testimonials.js";
 import { cv } from "./data/cv.js";
 import { about } from "./data/about.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  /* =========================================================
-   * Navigation
-   * ========================================================= */
-  const menuItems = [
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* =============================
+   * MENU
+   * ============================= */
+  var menuItems = [
     { label: "Welcome", slug: "index" },
     { label: "Speaking", slug: "speaking" },
     { label: "Publications", slug: "publications" },
     { label: "Testimonials", slug: "testimonials" },
     { label: "CV", slug: "cv" },
-    { label: "About", slug: "about" },
+    { label: "About", slug: "about" }
   ];
 
-  /* =========================================================
-   * Page registry
-   * ========================================================= */
-  const pages = {
+  /* =============================
+   * PAGES
+   * ============================= */
+  var pages = {
     index: {
       layout: "hero",
       hero: {
         title: "Hi! I am Dora and I accelerate the design delivery process.",
         text:
-          "I'm a Head of Design with 18+ years of experience turning complex challenges into seamless customer experiences.",
-      },
+          "I'm a Head of Design with 18+ years of experience turning complex challenges into seamless customer experiences."
+      }
     },
-    speaking,
-    publications,
-    testimonials,
-    cv,
-    about,
-    404: {
-      layout: "default",
-      title: "404 — User journey incomplete",
-      paragraphs: [
-        "Looks like this path wasn’t part of the happy flow.",
-        "Maybe try the menu, or head back home.",
-      ],
-    },
+    speaking: speaking,
+    publications: publications,
+    testimonials: testimonials,
+    cv: cv,
+    about: about
   };
 
-  /* =========================================================
-   * DOM helpers
-   * ========================================================= */
-  const body = document.body;
-  const header = document.getElementById("header");
-  const content = document.getElementById("content");
-  const menuList = document.getElementById("menuList");
-  const themeToggle = document.getElementById("themeToggle");
+  /* =============================
+   * DOM ELEMENTS
+   * ============================= */
+  var body = document.body;
+  var header = document.getElementById("header");
+  var content = document.getElementById("content");
+  var menuList = document.getElementById("menuList");
+  var themeToggle = document.getElementById("themeToggle");
+  var menuToggle = document.querySelector(".menu-toggle");
 
-  let isDarkMode = localStorage.getItem("theme") === "dark";
+  var isDarkMode = localStorage.getItem("theme") === "dark";
 
-  const clear = (el) => (el.innerHTML = "");
-
-  const getCurrentPage = () => {
-    const slug = window.location.hash.slice(1);
-    return pages[slug] ? slug : slug ? "404" : "index";
-  };
-
-  /* =========================================================
-   * Generic master–detail renderer
-   * ========================================================= */
-  function renderMasterDetail({
-    title,
-    intro,
-    groups,
-    containerClass,
-    itemRenderer,
-    detailRenderer,
-  }) {
-    const section = document.createElement("section");
-    section.innerHTML = `<h2>${title}</h2><p>${intro}</p>`;
-
-    const layout = document.createElement("div");
-    layout.className = `master-detail-layout ${containerClass}`;
-
-    const nav = document.createElement("nav");
-    nav.className = "master-detail-nav";
-
-    const details = document.createElement("div");
-    details.className = "master-detail-details";
-    details.innerHTML = `<p class="master-detail-placeholder">${intro}</p>`;
-
-    Object.keys(groups)
-      .sort((a, b) => b - a)
-      .forEach((key) => {
-        const group = document.createElement("div");
-        group.className = "master-detail-group";
-        group.innerHTML = `<h3>${key}</h3>`;
-
-        groups[key].forEach((item) => {
-          const el = itemRenderer(item);
-          el.addEventListener("click", (e) => {
-            e.preventDefault();
-            details.innerHTML = detailRenderer(item);
-          });
-          group.appendChild(el);
-        });
-
-        nav.appendChild(group);
-      });
-
-    layout.append(nav, details);
-    section.appendChild(layout);
-    content.appendChild(section);
+  /* =============================
+   * HELPERS
+   * ============================= */
+  function clearElement(el) {
+    el.innerHTML = "";
   }
 
-  /* =========================================================
-   * Renderers
-   * ========================================================= */
-  function renderHero({ hero }) {
-    header.innerHTML = `<h1>${hero.title}</h1><p>${hero.text}</p>`;
+  function getCurrentPage() {
+    var hash = window.location.hash.replace("#", "");
+    if (pages[hash]) return hash;
+    if (hash) return "404";
+    return "index";
   }
 
-  function renderDefault({ title, paragraphs = [], image }) {
-    const section = document.createElement("section");
+  function formatPublicationText(text) {
+    if (typeof text !== "string") return "";
+
+    text = text
+      .replace(/\[strong\]/gi, "<strong>")
+      .replace(/\[\/strong\]/gi, "</strong>");
+
+    text = text.replace(
+      /\[quote\]([\s\S]*?)\[\/quote\]\s*\[author\]([\s\S]*?)\[\/author\]/gi,
+      function (_, quoteText, authorText) {
+        return (
+          '<blockquote class="publication-quote">' +
+            '<p class="publication-quote-text">' + quoteText.trim() + '</p>' +
+            '<footer class="publication-quote-author">' + authorText.trim() + '</footer>' +
+          '</blockquote>'
+        );
+      }
+    );
+
+    text = text.replace(
+      /\[quote\]([\s\S]*?)\[\/quote\]/gi,
+      function (_, quoteText) {
+        return (
+          '<blockquote class="publication-quote">' +
+            '<p class="publication-quote-text">' + quoteText.trim() + '</p>' +
+          '</blockquote>'
+        );
+      }
+    );
+
+    return text;
+  }
+
+  /* =============================
+   * HERO
+   * ============================= */
+  function renderHero(page) {
+    header.innerHTML =
+      "<h1>" + page.hero.title + "</h1>" +
+      "<p>" + page.hero.text + "</p>";
+  }
+
+  /* =============================
+   * DEFAULT
+   * ============================= */
+  function renderDefault(page) {
+    var section = document.createElement("section");
     section.className = "content-section";
 
-    const text = document.createElement("div");
-    text.innerHTML = `<h2>${title}</h2>`;
+    var textCol = document.createElement("div");
 
-    paragraphs.forEach((p) => {
-      const para = document.createElement("p");
-      para.textContent = p;
-      text.appendChild(para);
-    });
+    var h2 = document.createElement("h2");
+    h2.textContent = page.title;
+    textCol.appendChild(h2);
 
-    section.appendChild(text);
+    if (page.paragraphs) {
+      page.paragraphs.forEach(function (text) {
+        var p = document.createElement("p");
+        p.textContent = text;
+        textCol.appendChild(p);
+      });
+    }
 
-    if (image) {
-      const imgWrap = document.createElement("div");
-      imgWrap.className = "content-image";
+    section.appendChild(textCol);
 
-      const img = document.createElement("img");
-      img.src = image.src;
-      img.alt = image.alt;
-
-      imgWrap.appendChild(img);
-      section.appendChild(imgWrap);
+    if (page.image) {
+      var imageCol = document.createElement("div");
+      var img = document.createElement("img");
+      img.src = page.image.src;
+      img.alt = page.image.alt;
+      imageCol.appendChild(img);
+      section.appendChild(imageCol);
     }
 
     content.appendChild(section);
   }
 
-  function renderSpeaking({ title, intro, timeline }) {
-    renderMasterDetail({
-      title,
-      intro,
-      groups: timeline,
-      containerClass: "speaking",
-      itemRenderer: (talk) => {
-        const link = document.createElement("a");
-        link.href = "#";
-        link.className = "speaking-item";
-        link.innerHTML = `
-          <span class="speaking-title">${talk.title}</span>
-          <span class="speaking-conf">${talk.conference}</span>
-        `;
-        return link;
-      },
-      detailRenderer: (talk) => `
-        <h3>${talk.title}</h3>
-        <p class="speaking-conf">${talk.conference}</p>
-        ${talk.content.map((p) => `<p>${p}</p>`).join("")}
-      `,
-    });
-  }
+  /* =========================================================
+   * ACCORDION SECTION
+   * ========================================================= */
+  function renderAccordionSection(sectionTitle, items) {
+    var wrapper = document.createElement("div");
 
-  function renderPublications({ title, intro, timeline }) {
-    renderMasterDetail({
-      title,
-      intro,
-      groups: timeline,
-      containerClass: "publications",
-      itemRenderer: (article) => {
-        const link = document.createElement("a");
-        link.href = "#";
-        link.className = "publications-item";
-        link.textContent = article.title;
-        return link;
-      },
-      detailRenderer: (article) => `
-        <h3>${article.title}</h3>
-        ${article.content.map((p) => `<p>${p}</p>`).join("")}
-      `,
-    });
-  }
+    var heading = document.createElement("h3");
+    heading.textContent = sectionTitle;
+    wrapper.appendChild(heading);
 
-  function renderTestimonials({ title, quotes }) {
-    const section = document.createElement("section");
-    section.innerHTML = `<h2>${title}</h2>`;
+    items.forEach(function (item) {
+      var details = document.createElement("details");
 
-    quotes.forEach(({ text, author }) => {
-      section.innerHTML += `
-        <figure class="quote">
-          <blockquote class="quote-text">${text}</blockquote>
-          <figcaption class="quote-author">— ${author}</figcaption>
-        </figure>
-      `;
+      var summary = document.createElement("summary");
+      summary.className = "speaking-summary";
+
+      var title = document.createElement("span");
+      title.className = "speaking-title";
+      title.textContent = item.title;
+      summary.appendChild(title);
+
+      details.appendChild(summary);
+
+      var contentWrap = document.createElement("div");
+      contentWrap.className = "accordion-content";
+
+      if (item.content) {
+        item.content.forEach(function (text) {
+          var p = document.createElement("p");
+          p.textContent = text;
+          contentWrap.appendChild(p);
+        });
+      }
+
+      details.appendChild(contentWrap);
+      wrapper.appendChild(details);
     });
 
-    content.appendChild(section);
+    return wrapper;
   }
 
-  function renderCV({ title, design, management, education, skills }) {
-    const section = document.createElement("section");
-    section.innerHTML = `<h2>${title}</h2>`;
+  /* =============================
+   * SPEAKING
+   * ============================= */
+  function renderSpeaking(page) {
+    renderAccordionPage(page, false);
+  }
 
-    const grid = document.createElement("div");
+  /* =============================
+   * PUBLICATIONS
+   * ============================= */
+  function renderPublications(page) {
+    renderAccordionPage(page, true);
+  }
+
+  /* =============================
+   * CV
+   * ============================= */
+  function renderCV(page) {
+    var section = document.createElement("section");
+
+    var h2 = document.createElement("h2");
+    h2.textContent = page.title;
+    section.appendChild(h2);
+
+    var grid = document.createElement("div");
     grid.className = "cv-grid";
 
-    const createColumn = (heading, items) => {
-      const column = document.createElement("div");
-      column.className = "cv-column";
-      column.innerHTML = `<h3>${heading}</h3>`;
+    /* LEFT COLUMN – OCCUPATION */
+    var leftCol = document.createElement("div");
+    if (page.timeline.Occupation) {
+      leftCol.appendChild(
+        renderAccordionSection("Occupation", page.timeline.Occupation)
+      );
+    }
 
-      items.forEach(({ title, content }) => {
-        const details = document.createElement("details");
-        details.innerHTML = `
-          <summary>${title}</summary>
-          <div class="accordion-content">
-            <p>${content}</p>
-          </div>
-        `;
-        column.appendChild(details);
-      });
+    /* RIGHT COLUMN – EDUCATION + SKILLS */
+    var rightCol = document.createElement("div");
+    if (page.timeline.Education) {
+      rightCol.appendChild(
+        renderAccordionSection("Education", page.timeline.Education)
+      );
+    }
+    if (page.timeline.Skills) {
+      rightCol.appendChild(
+        renderAccordionSection("Skills", page.timeline.Skills)
+      );
+    }
 
-      return column;
-    };
-
-    grid.append(
-      createColumn("Design", design),
-      createColumn("Management", management),
-      createColumn("Education", education),
-      createColumn("Skills", skills)
-    );
+    grid.appendChild(leftCol);
+    grid.appendChild(rightCol);
 
     section.appendChild(grid);
     content.appendChild(section);
   }
 
-  function renderMenu() {
-    menuList.innerHTML = menuItems
-      .map(
-        ({ label, slug }) => `
-          <li>
-            <a href="#${slug}" class="${
-          slug === getCurrentPage() ? "active" : ""
-        }">
-              ${label}
-            </a>
-          </li>
-        `
-      )
-      .join("");
+  /* =============================
+   * SHARED ACCORDION PAGE
+   * ============================= */
+  function renderAccordionPage(page, isPublications) {
+    var section = document.createElement("section");
+
+    var h2 = document.createElement("h2");
+    h2.textContent = page.title;
+    section.appendChild(h2);
+
+    if (page.intro) {
+      var intro = document.createElement("p");
+      intro.textContent = page.intro;
+      section.appendChild(intro);
+    }
+
+    Object.keys(page.timeline).sort(function (a, b) {
+      return b - a;
+    }).forEach(function (year) {
+      var yearBlock = document.createElement("div");
+      yearBlock.className = "speaking-year";
+
+      var yearHeading = document.createElement("h3");
+      yearHeading.textContent = year;
+      yearBlock.appendChild(yearHeading);
+
+      page.timeline[year].forEach(function (item) {
+        var details = document.createElement("details");
+
+        var summary = document.createElement("summary");
+        summary.className = "speaking-summary";
+
+        var title = document.createElement("span");
+        title.className = "speaking-title";
+        title.textContent = item.title;
+        summary.appendChild(title);
+
+        details.appendChild(summary);
+
+        var contentWrap = document.createElement("div");
+        contentWrap.className = "accordion-content";
+
+        if (item.content) {
+          item.content.forEach(function (text) {
+            var p = document.createElement("p");
+            p.innerHTML = isPublications
+              ? formatPublicationText(text)
+              : text;
+            contentWrap.appendChild(p);
+          });
+        }
+
+        details.appendChild(contentWrap);
+        yearBlock.appendChild(details);
+      });
+
+      section.appendChild(yearBlock);
+    });
+
+    content.appendChild(section);
   }
 
-  /* =========================================================
-   * Main render
-   * ========================================================= */
+  /* =============================
+   * MENU
+   * ============================= */
+  function renderMenu() {
+    var current = getCurrentPage();
+    menuList.innerHTML = "";
+
+    menuItems.forEach(function (item) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "#" + item.slug;
+      a.textContent = item.label;
+
+      if (item.slug === current) {
+        a.className = "active";
+      }
+
+      li.appendChild(a);
+      menuList.appendChild(li);
+    });
+  }
+
+  /* =============================
+   * MAIN RENDER
+   * ============================= */
   function render() {
-    clear(header);
-    clear(content);
+    clearElement(header);
+    clearElement(content);
 
-    const page = pages[getCurrentPage()];
-    if (!page) return;
+    var pageKey = getCurrentPage();
+    var page = pages[pageKey];
 
-    switch (page.layout) {
-      case "hero":
-        renderHero(page);
-        break;
-      case "default":
-        renderDefault(page);
-        break;
-      case "speaking":
-        renderSpeaking(page);
-        break;
-      case "publications":
-        renderPublications(page);
-        break;
-      case "testimonials":
-        renderTestimonials(page);
-        break;
-      case "cv":
-        renderCV(page);
-        break;
-      default:
-        renderDefault(pages["404"]);
+    if (page.layout === "hero") {
+      renderHero(page);
+    } else if (pageKey === "speaking") {
+      renderSpeaking(page);
+    } else if (pageKey === "publications") {
+      renderPublications(page);
+    } else if (pageKey === "cv") {
+      renderCV(page);
+    } else {
+      renderDefault(page);
     }
 
     body.classList.toggle("dark", isDarkMode);
@@ -298,10 +347,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMenu();
   }
 
-  /* =========================================================
-   * Theme handling
-   * ========================================================= */
-  themeToggle.addEventListener("change", () => {
+  /* =============================
+   * THEME
+   * ============================= */
+  themeToggle.addEventListener("change", function () {
     isDarkMode = themeToggle.checked;
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
     body.classList.toggle("dark", isDarkMode);
