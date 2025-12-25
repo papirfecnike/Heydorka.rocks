@@ -11,24 +11,34 @@
     <div id="page" class="page">
       <!-- Navigation -->
       <nav class="main-nav" aria-label="Main navigation">
-        <ul id="menuList" class="menu"></ul>
-      </nav>
+        <!-- ✅ ADDED: mobile menu toggle -->
+        <button
+          class="menu-toggle"
+          aria-controls="menuList"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
 
-      <!-- Theme toggle -->
-      <div class="theme-switch">
-        <input
-          type="checkbox"
-          id="themeToggle"
-          class="theme-switch__input"
-          role="switch"
-          aria-label="Toggle dark mode"
-        />
-        <label for="themeToggle" class="theme-switch__label">
-          <span class="theme-switch__icon">☼</span>
-          <span class="theme-switch__icon">⏾</span>
-          <span class="theme-switch__slider"></span>
-        </label>
-      </div>
+        <ul id="menuList" class="menu"></ul>
+
+        <!-- Theme toggle -->
+        <div class="theme-switch">
+          <input
+            type="checkbox"
+            id="themeToggle"
+            class="theme-switch__input"
+            role="switch"
+            aria-label="Toggle dark mode"
+          />
+          <label for="themeToggle" class="theme-switch__label">
+            <span class="theme-switch__icon">☼</span>
+            <span class="theme-switch__icon">⏾</span>
+            <span class="theme-switch__slider"></span>
+          </label>
+        </div>
+      </nav>
 
       <!-- Hero -->
       <header id="header" class="header"></header>
@@ -42,7 +52,6 @@
       </footer>
     </div>
 
-    <!-- IMPORTANT: module + correct path -->
     <script type="module" src="js/app.js"></script>
   </body>
 </html>
