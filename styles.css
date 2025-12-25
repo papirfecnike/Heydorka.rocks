@@ -358,6 +358,42 @@ body.dark .publication-quote {
 }
 
 /* =========================================================
+   TESTIMONIALS
+========================================================= */
+.testimonials-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xl);
+}
+
+.testimonial {
+  margin: 1rem;
+  padding: var(--l) var(--xl);
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 4px solid rgba(0, 0, 0, 0.35);
+  border-radius: var(--radius-s);
+}
+
+body.dark .testimonial {
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+.testimonial blockquote {
+  margin: 0 0 var(--s);
+  font-style: italic;
+  color: var(--text);
+}
+
+.testimonial figcaption {
+  font-size: var(--small);
+  color: var(--text-muted);
+  text-align: right;
+}
+
+
+
+/* =========================================================
    CV
 ========================================================= */
 .cv-grid {
