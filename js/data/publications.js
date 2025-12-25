@@ -2,7 +2,7 @@ export const publications = {
   layout: "publications",
   title: "Publications",
   timeline: {
-    2024: [
+    2025: [
       {
       id: "secure-design-how-ux-supports-it-security-in-banking",
       title: "Secure design: how UX can support IT security in a bank application",
@@ -286,6 +286,8 @@ export const publications = {
         "The more inclusive a product is, the more people can use it — and love it."
       ],
     },
+  ],
+  2024: [
       {
         id: "the-ripple-effect-information-architecture",
         title: "The ripple effect: how information architecture transforms your product, company, and (almost) everything",

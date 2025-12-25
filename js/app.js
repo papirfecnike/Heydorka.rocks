@@ -140,6 +140,39 @@ document.addEventListener("DOMContentLoaded", function () {
     content.appendChild(section);
   }
 
+  /* =============================
+   * TESTIMONIALS
+   * ============================= */
+  function renderTestimonials(page) {
+    var section = document.createElement("section");
+    section.className = "testimonials-section";
+
+    var h2 = document.createElement("h2");
+    h2.textContent = page.title;
+    section.appendChild(h2);
+
+    var grid = document.createElement("div");
+    grid.className = "testimonials-grid";
+
+    page.quotes.forEach(function (quote) {
+      var figure = document.createElement("figure");
+      figure.className = "testimonial";
+
+      var blockquote = document.createElement("blockquote");
+      blockquote.textContent = quote.text;
+
+      var figcaption = document.createElement("figcaption");
+      figcaption.textContent = quote.author;
+
+      figure.appendChild(blockquote);
+      figure.appendChild(figcaption);
+      grid.appendChild(figure);
+    });
+
+    section.appendChild(grid);
+    content.appendChild(section);
+  }
+
   /* =========================================================
    * ACCORDION SECTION
    * ========================================================= */
@@ -208,7 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var grid = document.createElement("div");
     grid.className = "cv-grid";
 
-    /* LEFT COLUMN – OCCUPATION */
     var leftCol = document.createElement("div");
     if (page.timeline.Occupation) {
       leftCol.appendChild(
@@ -216,7 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
 
-    /* RIGHT COLUMN – EDUCATION + SKILLS */
     var rightCol = document.createElement("div");
     if (page.timeline.Education) {
       rightCol.appendChild(
@@ -336,6 +367,8 @@ document.addEventListener("DOMContentLoaded", function () {
       renderSpeaking(page);
     } else if (pageKey === "publications") {
       renderPublications(page);
+    } else if (pageKey === "testimonials") {
+      renderTestimonials(page);
     } else if (pageKey === "cv") {
       renderCV(page);
     } else {
