@@ -4,7 +4,9 @@ export const cv = {
   timeline: {
     "Occupation": [
       {
-        title: "Head of Design (Element Logic, 2025–current)",
+        title: "Head of Design",
+        company: "Element Logic",
+        year: "2025–current",
         content: [
           "Situation: our design team is growing, and we’re building a strong, well-integrated design organization that collaborates seamlessly with developers, product managers, and other stakeholders.",
           "Task: my role is to support the team’s professional growth, ensure smooth cross-team collaboration, and deliver high-quality design solutions. I also focus on hiring the best UX talent to create a skilled and diverse team that drives long-term success.",
@@ -13,7 +15,9 @@ export const cv = {
         ]
       },
       {
-        title: "Senior UX Designer (Element Logic, 2024–2025)",
+        title: "Senior UX Designer",
+        company: "Element Logic",
+        year: "2024–2025",
         content: [
           "Situation: Element Logic's flagship product, eManager, which operates the AutoStore robotic logistics system, is developed by five different teams that require a dedicated designer.",
           "Task: I am tasked with creating a new design for the eManager software unit, while also establishing a design system to streamline processes.",
@@ -22,7 +26,9 @@ export const cv = {
         ]
       },
       {
-        title: "Product Design & DesignOps Lead (Futurehome, 2022–2024)",
+        title: "Product Design & DesignOps Lead",
+        company: "Futurehome",
+        year: "2022–2024",
         content: [
           "Situation: I was hired for leading product design and design operations, because the product team needed someone who connects the dots.",
           "Task: the mandate aimed to optimize design processes, enhance user experience, and establish efficient workflows across Futurehome's internal- and external flows and products. My responsibilities covered to maintain motivation and professional environment in the design team and improve communication with other stakeholders and teams.",
@@ -31,7 +37,9 @@ export const cv = {
         ]
       },
       {
-        title: "Senior Product Designer (GoTo, 2022)",
+        title: "Senior Product Designer",
+        company: "GoTo (ex-LogMeIn)",
+        year: "2022",
         content: [
           "Situation: collaborated with engineering teams to create precise designs within the existing system.",
           "Task: focused on maintaining accessibility standards (WCAG) while delivering complex features on tight deadlines. Documented projects and collaborated with technical teams.",
@@ -40,7 +48,9 @@ export const cv = {
         ]
       },
       {
-        title: "Design Team Leader (VDD:Live, 2020–2022)",
+        title: "Design Team Leader",
+        company: "VCC:Live",
+        year: "2020–2022",
         content: [
           "Situation: led a project to establish a robust design foundation, including information architecture, design system, and documentation. Also, established a design team from scratch, growing & mentoring team members.",
           "Task: conducted UX research, aligned design decisions with business requirements, and fostered collaboration with product management, engineering, and stakeholders. Formed a motivated design team, prioritizing well-being, organizing educational sessions, and introducing UX metrics and methodologies.",
@@ -49,13 +59,17 @@ export const cv = {
         ]
       },
       {
-        title: "Design Teacher (CodeX, 2021)",
+        title: "Design Teacher",
+        company: "Code.X",
+        year: "2021",
         content: [
           "I was a voluntary teacher in the Code for Albania program of Code.X - my subject was Human centered design, incl. design thinking, user experience and user testing, market research and benchmarking, user interface design and prototyping."
         ]
       },
       {
-        title: "Senior Project Manager (Supercharge, 2019–2020)",
+        title: "Senior Project Manager",
+        company: "Supercharge",
+        year: "2019–2020",
         content: [
           "Situation: led UX/UI design and development for Ericsson's MWC 2020 sales demo. Conducted user research, coordinated schedules, and applied various UX methodologies.",
           "Task: negotiated with clients, administered projects, and managed teams across projects to meet requirements and company goals. Managed resource allocation and resolved blocker issues effectively.",
@@ -65,7 +79,9 @@ export const cv = {
         ]
       },
       {
-        title: "Senior Business Analyst & UX Designer (IBM, 2018–2019)",
+        title: "Senior Business Analyst & UX Designer",
+        company: "IBM",
+        year: "2018–2019",
         content: [
           "Situation: assessed the need to transform a monolithic internal application into a user-centric service aligning with organizational goals. ",
           "Task: translated business requirements into development tasks, conducted global user research, prioritized features, and applied diverse UX methodologies.",
@@ -74,7 +90,9 @@ export const cv = {
         ]
       },
       {
-        title: "Development Team Leader (Commsignia, 2017–2018)",
+        title: "Development Team Leader",
+        company: "Commsignia",
+        year: "2017–2018",
         content: [
           "- Led developer teams specializing in C, C++, and JAVA for V2X solution",
           "- Optimized resource allocation through agile methodologies",
@@ -83,7 +101,9 @@ export const cv = {
         ]
       },
       {
-        title: "Project Manager (AImotive, 2016–2017)",
+        title: "Project Manager",
+        company: "AImotive",
+        year: "2016–2017",
         content: [
           "- Key leadership role in Volvo self-driving car project",
           "- Developed software in collaboration with Nvidia",
@@ -94,7 +114,9 @@ export const cv = {
         ]
       },
       {
-        title: "Scrum Master (NNG, 2014–2016)",
+        title: "Scrum Master",
+        company: "NNG",
+        year: "2014–2016",
         content: [
           "- Actively participated in resource allocation and process enhancement (negotiated between core development and project teams",
           "- Promoted knowledge sharing and transparency",
@@ -104,7 +126,9 @@ export const cv = {
         ]
       },
       {
-        title: "UI Designer (NNG, 2007–2012)",
+        title: "UI Designer",
+        company: "NNG",
+        year: "2007–2014",
         content: [
           "Situation: involved in designing, developing, and maintaining the user interface for navigation software, contributing to the project's success and understanding the software development cycle and SaaS concept.",
           "Task: participated in creating car- and pedestrian navigation as a part of many car manufacturer's own software and iPhone and focused on interaction design, user interface, and UI kit development.",
@@ -116,15 +140,17 @@ export const cv = {
 
     "Education": [
       {
-        title:
-          "MBA – Budapest University of Technology and Economics (2010–2013)",
+        title: "Master of Business Administration",
+        company: "Budapest University of Technology and Economics",
+        year: "2010-2013",
         content: [
           "Accounting, finance, project management, law, economics, marketing, and HR. Thesis on early-stage company management."
         ]
       },
       {
-        title:
-          "Bachelor’s Degree – University of Hertfordshire (2004–2008)",
+        title: "Bachelor’s Degree",
+        company: "University of Hertfordshire",
+        year: "2004-2008",
         content: [
           "Business, economics, marketing, and project management. Thesis on motivating creative teams."
         ]
