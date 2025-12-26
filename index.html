@@ -10,35 +10,26 @@
   <body>
     <div id="page" class="page">
       <!-- Navigation -->
-      <nav class="main-nav" aria-label="Main navigation">
-        <!-- ✅ ADDED: mobile menu toggle -->
-        <button
-          class="menu-toggle"
-          aria-controls="menuList"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
+      <nav>
+        <button id="menuToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
 
-        <ul id="menuList" class="menu"></ul>
+        <div class="site-logo">
+          <img src="img/heydorka.png" alt="Hey, Dorka!">
+        </div>
 
-        <!-- Theme toggle -->
+        <div class="mobile-menu">
+          <ul id="menuList"></ul>
+        </div>
+          
         <div class="theme-switch">
-          <input
-            type="checkbox"
-            id="themeToggle"
-            class="theme-switch__input"
-            role="switch"
-            aria-label="Toggle dark mode"
-          />
-          <label for="themeToggle" class="theme-switch__label">
-            <span class="theme-switch__icon">☼</span>
-            <span class="theme-switch__icon">⏾</span>
+          <input id="themeToggle" class="theme-switch__input" type="checkbox">
+          <label class="theme-switch__label" for="themeToggle">
             <span class="theme-switch__slider"></span>
           </label>
         </div>
       </nav>
+
+      <div id="menuBackdrop"></div>
 
       <!-- Hero -->
       <header id="header" class="header"></header>
