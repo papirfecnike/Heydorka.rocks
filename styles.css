@@ -871,22 +871,4 @@ footer {
     gap: var(--l);
   }
 
-  .theme-switch__label::before {
-    content: "☀️";
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    font-size: 0.8rem;
-    z-index: 1000;
-  }
-
-  .theme-switch__label::after {
-    content: "🌙";
-    position: absolute;
-    right: 8px;
-    top: 5px;
-    font-size: 0.6rem;
-    z-index: 1000;
-  }
-
 }
