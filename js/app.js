@@ -84,21 +84,105 @@ document.addEventListener("DOMContentLoaded", function () {
       );
   }
 
+  function getUpcomingTalks() {
+  const currentYear = new Date().getFullYear();
+  const upcoming = [];
+
+  Object.keys(speaking.timeline).forEach(year => {
+    const isFutureYear = Number(year) > currentYear;
+
+    speaking.timeline[year].forEach(item => {
+      if (item.label === "Upcoming" || isFutureYear) {
+        upcoming.push({
+          ...item,
+          year
+        });
+      }
+    });
+  });
+
+  return upcoming;
+}
+
   /* =============================
-   * HERO
-   * ============================= */
-  function renderHero(page) {
-    header.innerHTML = `
-      <h1>${page.hero.title}</h1>
-      <p>${page.hero.text}</p>
-    `;
+ * WELCOME (HOME)
+ * ============================= */
+function renderHome(page) {
+  // Wrapper grid (3:1 layout)
+  const grid = document.createElement("div");
+  grid.className = "home-grid";
+
+  /* ---- Main welcome section ---- */
+  const mainSection = document.createElement("section");
+    mainSection.className = "welcome-home";
+
+  const h1 = document.createElement("h1");
+  h1.textContent = page.hero.title;
+
+  const p = document.createElement("p");
+  p.textContent = page.hero.text;
+
+  mainSection.appendChild(h1);
+  mainSection.appendChild(p);
+
+  /* ---- Upcoming talks ---- */
+  const upcoming = getUpcomingTalks();
+  let upcomingSection = null;
+
+  if (upcoming.length) {
+    upcomingSection = document.createElement("section");
+    upcomingSection.className = "upcoming-news";
+
+    const h2 = document.createElement("h3");
+    h2.textContent = "Upcoming talks";
+    upcomingSection.appendChild(h2);
+
+    const list = document.createElement("ul");
+    list.className = "upcoming-news-list";
+
+    upcoming.forEach(talk => {
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <span class="upcoming-dot"></span>
+        <div class="upcoming-news-content">
+          <strong>${talk.title}</strong>
+          <span class="upcoming-news-meta">
+            ${talk.conference || ""} · ${talk.year}
+          </span>
+          ${
+            talk.link
+              ? `<a class="upcoming-news-link link-underline"
+                  href="${talk.link}"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Conference website →
+                </a>`
+              : ""
+          }
+        </div>
+      `;
+
+      list.appendChild(li);
+    });
+
+    upcomingSection.appendChild(list);
   }
+
+  /* ---- Assemble ---- */
+  grid.appendChild(mainSection);
+  if (upcomingSection) grid.appendChild(upcomingSection);
+
+  content.appendChild(grid);
+}
+
 
   /* =============================
    * ACCORDION SECTION (CV)
    * ============================= */
   function renderAccordionSection(sectionTitle, items) {
     var wrapper = document.createElement("div");
+    wrapper.className = "accordion-section"
 
     var heading = document.createElement("h3");
     heading.textContent = sectionTitle;
@@ -132,9 +216,9 @@ document.addEventListener("DOMContentLoaded", function () {
       contentWrap.className = "accordion-content";
 
       (item.content || []).forEach(function (text) {
-        var p = document.createElement("p");
-        p.textContent = text;
-        contentWrap.appendChild(p);
+        var div = document.createElement("p");
+        div.innerHTML = formatPublicationText(text);
+        contentWrap.appendChild(div);
       });
 
       details.appendChild(contentWrap);
@@ -236,9 +320,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* ---- Main text content ---- */
         (item.content || []).forEach(function (text) {
-          var p = document.createElement("p");
-          p.textContent = text;
-          contentWrap.appendChild(p);
+          var div = document.createElement("p");
+          div.innerHTML = formatPublicationText(text);
+          contentWrap.appendChild(div);
         });
 
         /* ---- Links (Speaking only) ---- */
@@ -374,7 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var pageKey = getCurrentPage();
     var page = pages[pageKey];
 
-    if (page.layout === "hero") renderHero(page);
+    if (page.layout === "hero") renderHome(page);
     else if (pageKey === "speaking") renderAccordionPage(page, false);
     else if (pageKey === "publications") renderAccordionPage(page, true);
     else if (pageKey === "testimonials") renderTestimonials(page);
@@ -396,18 +480,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   var nav = document.querySelector("nav");
-  var backdrop = document.getElementById("menuBackdrop");
 
   menuToggle.addEventListener("click", function () {
     var isOpen = nav.classList.toggle("open");
 
     menuToggle.setAttribute("aria-expanded", isOpen);
     menuToggle.textContent = isOpen ? "✕" : "☰";
-  });
-
-  /* close when clicking backdrop */
-  backdrop.addEventListener("click", function () {
-    closeMenu();
   });
 
   /* close when clicking menu item */
@@ -421,10 +499,6 @@ document.addEventListener("DOMContentLoaded", function () {
     nav.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.textContent = "☰";
-  }
-
-  if (backdrop) {
-    backdrop.addEventListener("click", closeMenu);
   }
 
   window.addEventListener("hashchange", render);
