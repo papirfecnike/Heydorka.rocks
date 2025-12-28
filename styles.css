@@ -668,6 +668,25 @@ footer {
   .cv-grid {
     grid-template-columns: 1fr;
   }
+
+  .theme-switch__label::before {
+    content: "☀️";
+    position: absolute;
+    left: 3px;
+    top: 5px;
+    font-size: 0.8rem;
+    z-index: 1000;
+  }
+
+  .theme-switch__label::after {
+    content: "🌙";
+    position: absolute;
+    right: 7px;
+    top: 3px;
+    font-size: 0.6rem;
+    z-index: 1000;
+  }
+
 }
   
 @media (max-width: 800px) {
