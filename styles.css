@@ -874,7 +874,7 @@ footer {
   .theme-switch__label::before {
     content: "☀️";
     position: absolute;
-    left: 2px;
+    left: 3px;
     top: 5px;
     font-size: 0.8rem;
     z-index: 1000;
@@ -884,7 +884,7 @@ footer {
     content: "🌙";
     position: absolute;
     right: 8px;
-    top: 2px;
+    top: 3px;
     font-size: 0.6rem;
     z-index: 1000;
   }
