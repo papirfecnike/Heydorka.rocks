@@ -5,7 +5,7 @@ export const cv = {
     "Occupation": [
       {
         title: "Head of Design",
-        company: "Element Logic",
+        company: "ELEMENT LOGIC",
         year: "2025–current",
         content: [
           "Situation: our design team is growing, and we’re building a strong, well-integrated design organization that collaborates seamlessly with developers, product managers, and other stakeholders.",
@@ -16,7 +16,7 @@ export const cv = {
       },
       {
         title: "Senior UX Designer",
-        company: "Element Logic",
+        company: "ELEMENT LOGIC",
         year: "2024–2025",
         content: [
           "Situation: Element Logic's flagship product, eManager, which operates the AutoStore robotic logistics system, is developed by five different teams that require a dedicated designer.",
@@ -27,7 +27,7 @@ export const cv = {
       },
       {
         title: "Product Design & DesignOps Lead",
-        company: "Futurehome",
+        company: "FUTUREHOME",
         year: "2022–2024",
         content: [
           "Situation: I was hired for leading product design and design operations, because the product team needed someone who connects the dots.",
@@ -38,7 +38,7 @@ export const cv = {
       },
       {
         title: "Senior Product Designer",
-        company: "GoTo (ex-LogMeIn)",
+        company: "GOTO (ex-LogMeIn)",
         year: "2022",
         content: [
           "Situation: collaborated with engineering teams to create precise designs within the existing system.",
@@ -49,7 +49,7 @@ export const cv = {
       },
       {
         title: "Design Team Leader",
-        company: "VCC:Live",
+        company: "VCC:LIVE",
         year: "2020–2022",
         content: [
           "Situation: led a project to establish a robust design foundation, including information architecture, design system, and documentation. Also, established a design team from scratch, growing & mentoring team members.",
@@ -60,7 +60,7 @@ export const cv = {
       },
       {
         title: "Design Teacher",
-        company: "Code.X",
+        company: "CODE.X",
         year: "2021",
         content: [
           "I was a voluntary teacher in the Code for Albania program of Code.X - my subject was Human centered design, incl. design thinking, user experience and user testing, market research and benchmarking, user interface design and prototyping."
@@ -68,7 +68,7 @@ export const cv = {
       },
       {
         title: "Senior Project Manager",
-        company: "Supercharge",
+        company: "SUPERCHARGE",
         year: "2019–2020",
         content: [
           "Situation: led UX/UI design and development for Ericsson's MWC 2020 sales demo. Conducted user research, coordinated schedules, and applied various UX methodologies.",
@@ -91,7 +91,7 @@ export const cv = {
       },
       {
         title: "Development Team Leader",
-        company: "Commsignia",
+        company: "COMMSIGNIA",
         year: "2017–2018",
         content: [
           "- Led developer teams specializing in C, C++, and JAVA for V2X solution",
@@ -102,7 +102,7 @@ export const cv = {
       },
       {
         title: "Project Manager",
-        company: "AImotive",
+        company: "AIMOTIVE",
         year: "2016–2017",
         content: [
           "- Key leadership role in Volvo self-driving car project",
@@ -141,7 +141,7 @@ export const cv = {
     "Education": [
       {
         title: "Master of Business Administration",
-        company: "Budapest University of Technology and Economics",
+        company: "BUDAPEST UNIVERSITY OF TECHNOLOGY AND ECONOMICS",
         year: "2010-2013",
         content: [
           "Accounting, finance, project management, law, economics, marketing, and HR. Thesis on early-stage company management."
@@ -149,7 +149,7 @@ export const cv = {
       },
       {
         title: "Bachelor’s Degree",
-        company: "University of Hertfordshire",
+        company: "UNIVERSITY OF HERTFORDSHIRE",
         year: "2004-2008",
         content: [
           "Business, economics, marketing, and project management. Thesis on motivating creative teams."

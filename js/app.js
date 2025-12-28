@@ -49,6 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var isDarkMode = localStorage.getItem("theme") === "dark";
 
+  if (window.matchMedia('(max-width: 800px)').matches) {
+    document.querySelectorAll('#menuList a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('nav')?.classList.remove('open');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  }
+
+
   /* =============================
    * HELPERS
    * ============================= */
@@ -446,7 +456,6 @@ function renderHome(page) {
 
     content.appendChild(section);
   }
-
 
   /* =============================
    * MAIN
