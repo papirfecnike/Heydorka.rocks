@@ -10,7 +10,7 @@ export const publications = {
         "When developing a banking application, teams must comply with countless regulations, directives, and technical requirements.",
         "Amid product managers, architects, developers, testers, and legal advisors, two roles are especially critical: the IT security professional and the UX designer.",
         "But what does real collaboration between UX and IT security actually mean?",
-
+        "",
         "[strong]Design: the first line of defense[/strong]",
         "[quote]“If the secure solution is not also the easy, convenient, or practical one, users will find a way to bypass controls for their own comfort or efficiency.”[/quote] [author]— Miklós Zakar, Senior IT Security Expert, BinX Zrt.[/author]",
 
