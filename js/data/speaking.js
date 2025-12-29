@@ -11,8 +11,9 @@ export const speaking = {
         upcoming: true,
         content: [
           "What if UX research could move as fast as modern product development — without losing its soul?",
-          "I built a fully automated UX test framework using Figma Make to capture real user behavior asynchronously.",
-          "Within one week, we collected quantitative insights from dozens of users and freed time for deep interviews."
+          "In this talk, I’ll share how I created an automated, self-service UX testing method. When my global design team was out due to the Norwegian holiday season (but deadlines remained), I was forced to be creative: I built a 100% automated test framework with Figma Make that captured real user behavior - clicks, misclicks, task times, and screen recordings - async, flexible, and scalable. Within a week, we collected quantitative insights from dozens of users while freeing time for deep interviews. I even automated CSV analysis to reduce manual work.",
+          "This approach isn’t just a hack - it’s a shift in how UX research can live inside rapid prototyping cycles, powered by creative tooling, async collaboration, and a practical “good enough” mindset.",
+          "You’ll learn how it works, what we discovered (the good, the bad, and the hilarious), and how teams with limited researchers, time, or budget can adapt it."
         ],
         link: "https://reactnorway.com/",
         slides: null,
@@ -25,8 +26,9 @@ export const speaking = {
         date: "2026",
         upcoming: true,
         content: [
-          "When it comes to banking applications, security is non-negotiable, but so is the user experience.",
-          "This talk explores how UX design can work together with IT security to guide users safely through complex systems."
+          "When it comes to banking applications, security is non-negotiable, but so is the user experience. With sensitive financial data on the line, ensuring that users interact securely with your platform is crucial.",
+          "This talk will explore how UX design can be the unsung hero in protecting banking applications from security breaches. When UX and IT security work together, users are guided safely through complex security features without frustration or error. By focusing on intuitive design, we can reduce risky behaviors like bypassing 2FA, and ultimately build trust in digital banking systems.",
+          "Let us discover how seamless UX can be your first line of defense in the fight against cyber threats, and learn why good security design is just as important as good security code."
         ],
         link: "https://ndcsecurity.com/agenda/safe-by-design-the-ux-of-secure-banking-0iqc/0fgm7ets5ix",
         slides: null,
@@ -42,7 +44,9 @@ export const speaking = {
         date: "2025",
         upcoming: false,
         content: [
-          "This talk explores how UX design can be the unsung hero in protecting banking applications from security breaches."
+          "When it comes to banking applications, security is non-negotiable, but so is the user experience. With sensitive financial data on the line, ensuring that users interact securely with your platform is crucial.",
+          "This talk will explore how UX design can be the unsung hero in protecting banking applications from security breaches. When UX and IT security work together, users are guided safely through complex security features without frustration or error. By focusing on intuitive design, we can reduce risky behaviors like bypassing 2FA, and ultimately build trust in digital banking systems.",
+          "Let us discover how seamless UX can be your first line of defense in the fight against cyber threats, and learn why good security design is just as important as good security code."
         ],
         link: "https://2025.trondheimdc.no/",
         slides: null,
@@ -55,7 +59,7 @@ export const speaking = {
         date: "2025",
         upcoming: false,
         content: [
-          "This talk explores how tapping into the brain’s natural wiring can enhance user experiences."
+          "This presentation dives into how understanding the human brain’s wiring can lead to more intuitive, engaging, and seamless user experiences. By leveraging cognitive biases, psychological principles, and neuroscience insights, we can design interfaces and workflows that feel natural to users, guide their behavior, and create habit-forming interactions. We'll explore how to reduce friction in digital products, keeping users engaged and making interactions almost instinctive."
         ],
         link: "https://www.wearedevelopers.com/world-congress",
         slides: null,
@@ -68,7 +72,7 @@ export const speaking = {
         date: "2025",
         upcoming: false,
         content: [
-          "This talk explores how tapping into the brain’s natural wiring can enhance user experiences."
+          "This presentation dives into how understanding the human brain’s wiring can lead to more intuitive, engaging, and seamless user experiences. By leveraging cognitive biases, psychological principles, and neuroscience insights, we can design interfaces and workflows that feel natural to users, guide their behavior, and create habit-forming interactions. We'll explore how to reduce friction in digital products, keeping users engaged and making interactions almost instinctive."
         ],
         link: "https://ndcoslo.com/",
         slides: null,
@@ -82,7 +86,8 @@ export const speaking = {
         date: "2025",
         upcoming: false,
         content: [
-          "A strong information architecture supports sustainable growth, team alignment, and long-term success."
+          "Many companies, especially those started by engineers, initially focus on building a great product. However, as they grow, maintaining organized and scalable information architecture (IA) becomes challenging. This talk highlights the importance of IA for a company’s success, using a mobile app company as an example to illustrate the issues and provide solutions. A well-structured IA ensures sustainable growth, user-friendly products, and aligned teams, ultimately enhancing the product, user experience, and overall organization for continued success.",
+          "The structure: we'll start with a brief introduction, followed by outlining the scenario (the problem) involving a niche software application's information architecture. After grasping the situation, we'll examine the impact of initial missteps and identify the exact issues. With all the data in hand, we'll provide a step-by-step guide to untangling the chaos. Next, we'll explore advanced steps to further improve the information architecture and discuss the benefits for the organization."
         ],
         link: null,
         slides:
@@ -99,7 +104,7 @@ export const speaking = {
         date: "2024",
         upcoming: false,
         content: [
-          "Cooperation between Product Trio members is essential for delivering high-quality products."
+          "How can one effectively engage with a designer in a collaborative effort? What strategies and methods should be employed when communicating with a designer, and how can one articulate requests and inquiries? In what ways can a designer deliver results that align with your requirements for practical use? Is there room for refining communication skills or expressing thoughts in alternative ways? Are there approaches to integrate a designer into your workflows, fostering an environment where they naturally align their processes with yours for future collaborations?"
         ],
         link: null,
         slides: null,
@@ -113,7 +118,7 @@ export const speaking = {
         date: "2024",
         upcoming: false,
         content: [
-          "I will give a talk about the collaboration between designers and developers. Observing the perspective of the designer, the manager and the developer, while giving tools and ideas on how to involve each other to the process. The talk has been presented on DroidCon Berlin earlier this year, so it will be somewhat different this time."
+          "How can one effectively engage with a designer in a collaborative effort? What strategies and methods should be employed when communicating with a designer, and how can one articulate requests and inquiries? In what ways can a designer deliver results that align with your requirements for practical use? Is there room for refining communication skills or expressing thoughts in alternative ways? Are there approaches to integrate a designer into your workflows, fostering an environment where they naturally align their processes with yours for future collaborations?"
         ],
         link: null,
         slides: null,
@@ -126,7 +131,7 @@ export const speaking = {
         date: "2024",
         upcoming: false,
         content: [
-          "I’ll be discussing the crucial role of early design integration in engineering and business. By fostering collaboration, we can enhance user satisfaction and drive innovation. It’s a topic I’m passionate about, as design plays a vital role in shaping successful products and organizations."
+          "Imagine engineers building a software, when suddenly the need for design becomes evident. Late integration of design can lead to challenges, much like fitting a square peg into a round hole. Discover the importance of harmonious collaboration between engineers, design teams, management and other stakeholders, and explore the benefits of embracing design early on to enhance user satisfaction and drive innovation in the tech industry. Prioritize design as a strategic asset to transform organizations and products, ultimately boosting market competitiveness."
         ],
         link: null,
         slides: null,
